@@ -1,0 +1,29 @@
+<frame size="1000,300" plaf="com.sun.java.swing.plaf.windows.WindowsLookAndFeel">
+
+    <panel Bounds="0,455,200,300" Layout="GridLayout(2,1)" background="666666" border="LoweredBevelBorder"
+           size="1000,300">
+
+        <scrollpane visible="true" enable="true" HorizontalScrollBarPolicy="HORIZONTAL_SCROLLBAR_AS_NEEDED"
+                    VerticalScrollBarPolicy="VERTICAL_SCROLLBAR_NEVER"
+                    PreferredSize="400, 50">
+
+            <panel Bounds="100,255,100,200">
+                <hbox border="TitledBorder(Click on player to CATCH)">
+                    <button text="Praju  :  8" Font="VERDANA-BOLD-22" foreground="red"/>
+                    <button text="Praju  :  8" Font="VERDANA-BOLD-22" foreground="black"/>
+                    <button text="Praju  :  8" Font="VERDANA-BOLD-22" foreground="black"/>
+                    <button text="Praju  :  8" Font="VERDANA-BOLD-22" foreground="black"/>
+                    <button text="Praju  :  8" Font="VERDANA-BOLD-22" foreground="black"/>
+                    <button text="Praju  :  8" Font="VERDANA-BOLD-22" foreground="black"/>
+                    <button text="Praju  :  8" Font="VERDANA-BOLD-22" foreground="black"/>
+                    <button text="Praju  :  8" Font="VERDANA-BOLD-22" foreground="black"/>
+                    <button text="Praju  :  8" Font="VERDANA-BOLD-22" foreground="black"/>
+                    <button text="Praju  :  8" Font="VERDANA-BOLD-22" foreground="black"/>
+                </hbox>
+            </panel>
+        </scrollpane>
+
+        <label id="sequence" text="${sequence}$ ->" Font="VERDANA-BOLD-22" visible="true" Foreground="white"/>
+
+    </panel>
+</frame>
