@@ -10,11 +10,10 @@ mainClassName="com.tw.uno.Main" // Change it to your main class
 repositories { mavenCentral() }
 
 dependencies {
+
     testCompile 'junit:junit:4.10',
-            'jgoodies:forms:1.0.5','jdom:jdom:1.1','jdom:jdom:1.1'
-    testCompile 'org.swixml:swixml-contrib:2.6.20130530'
-
-
+            'org.jdom:jdom:1.1',
+            'org.swixml:swixml:2.6.20130530'
 }
 
 sourceSets {

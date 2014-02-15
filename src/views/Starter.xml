@@ -1,0 +1,13 @@
+<frame size="700,500">
+
+    <panel>
+
+        <label constraints="BorderLayout.NORHT" text="Game Master:"/>
+        <textfield id="masterName" columns="20" Text=""/>
+        <label constraints="BorderLayout.CENTER" text="Name:"/>
+        <textfield id="name" columns="20" rows="3" Text=""/>
+
+        <button id="join" constraints="BorderLayout.SOUTH" text="Join"/>
+    </panel>
+
+</frame>

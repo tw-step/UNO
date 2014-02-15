@@ -1,0 +1,17 @@
+<?views version="1.0" encoding="UTF-8"?>
+<frame name="mainframe" layout="BorderLayout" size="640,480" title="UNO">
+
+    <panel constraints="BorderLayout.EAST"  >
+
+        <scrollpane visible="true" enable="true" VerticalScrollBarPolicy="VERTICAL_SCROLLBAR_ALWAYS"
+                    HorizontalScrollBarPolicy="HORIZONTAL_SCROLLBAR_AS_NEEDED"
+                    PreferredSize="300, 1100">
+            <panel FlowLayout="FlowLayout.LEFT">
+                <label text="ACTIVITY LOG" />
+
+            </panel>
+        </scrollpane>
+    </panel>
+
+
+</frame>

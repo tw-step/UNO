@@ -1,0 +1,8 @@
+<dialog name="mainframe" title="Change Color" size="640,480"
+        Layout="GridLayout(2,2)" plaf="com.sun.java.swing.plaf.windows.WindowsLookAndFeel">
+    <button name="red" text="RED" Background="red" />
+    <button name="blue" text="BLUE" Background="blue" />
+    <button name="green" text="GREEN" Background="green" />
+    <button name="yellow" text="YELLOW" Background="yellow" />
+</dialog>
+
