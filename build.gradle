@@ -11,7 +11,9 @@ repositories { mavenCentral() }
 
 dependencies {
     testCompile 'junit:junit:4.10',
-            'jgoodies:forms:1.0.5'
+            'jgoodies:forms:1.0.5',
+            'org.jdom:jdom:1.1',
+            'net.sf.ingenias:swixml:1.0'
 }
 
 sourceSets {
