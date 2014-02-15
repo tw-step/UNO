@@ -8,7 +8,7 @@ public class Draw extends JPanel {
 
     private Draw() {
         try {
-            swix.render("xml/Draw.xml").setVisible(true);
+            swix.render("Views/Draw.xml").setVisible(true);
         } catch (Exception e) {
             throw new RuntimeException("rendering failed" + e);
         }
