@@ -1,22 +1,27 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<frame name="mainframe" layout="BorderLayout" size="640,480" title="UNO" plaf="com.sun.java.swing.plaf.windows.WindowsLookAndFeel">
-    <panel id="pnl" Layout="CardLayout(10,10)" Border="EtchedBorder">
+<frame name="mainframe" layout="BorderLayout" size="640,480" title="UNO">
 
+    <panel constraints="BorderLayout.SOUTH" >
+        <scrollpane visible="true" enable="true" HorizontalScrollBarPolicy="HORIZONTAL_SCROLLBAR_AS_NEEDED"
+                    VerticalScrollBarPolicy="VERTICAL_SCROLLBAR_NEVER"
+                    PreferredSize="400, 50">
 
+            <panel Font="Comic Sans MS-BOLD-16">
+
+                <button Text="1" Foreground="black" Background="red" size="12"/>
+                <button Text="reverse" Foreground="black" Background="green" size="12"/>
+                <button Text="skip" Foreground="black" Background="yellow" size="12"/>
+                <button Text="+2" Foreground="black" Background="blue" size="12"/>
+                <button Text="reverse" Foreground="black" Background="green" size="12"/>
+                <button Text="skip" Foreground="black" Background="yellow" size="12"/>
+                <button Text="+2" Foreground="black" Background="blue" size="12"/>
+                <button Text="reverse" Foreground="black" Background="green" size="12"/>
+                <button Text="skip" Foreground="black" Background="yellow" size="12"/>
+                <button Text="+2" Foreground="black" Background="blue" size="12"/>
+
+            </panel>
+        </scrollpane>
+
+        <button Text="UNO"/>
     </panel>
-
-    <panel constraints="BorderLayout.SOUTH">
-        <button Text="Card 1" Font="Comic Sans MS-BOLD-16" Foreground="red" Background="red" Action="showAction" ActionCommand="c1"/>
-        <button Text="Card 2" Font="Comic Sans MS-BOLD-16" Foreground="green" Background="green" Action="showAction" ActionCommand="c2"/>
-        <button Text="Card 3" Font="Comic Sans MS-BOLD-16" Foreground="yellow" Background="yellow" Action="showAction" ActionCommand="c3"/>
-        <button Text="Card 4" Font="Comic Sans MS-BOLD-16" Foreground="blue" Background="blue" Action="showAction" ActionCommand="c4"/>
-        <separator/>
-        <button Text="UNO" Action="nextAction"/>
-
-
-
-    </panel>
-
-
 
 </frame>
