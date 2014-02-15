@@ -11,7 +11,9 @@ repositories { mavenCentral() }
 
 dependencies {
 
-    testCompile 'junit:junit:4.10'
+    testCompile 'junit:junit:4.10',
+            'org.jdom:jdom:1.1',
+            'org.swixml:swixml:2.6.20130530'
 }
 
 sourceSets {
