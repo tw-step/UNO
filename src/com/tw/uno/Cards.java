@@ -7,7 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 
 
-public class Cards {
+public class Cards extends JFrame{
 
     private static final String DESCRIPTOR = "xml/MyCards.xml";
     private SwingEngine swix = new SwingEngine( this );
