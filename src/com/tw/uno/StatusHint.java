@@ -6,7 +6,7 @@ import javax.swing.*;
 
 public class StatusHint extends JInternalFrame{
     public StatusHint(int x, int y, int width, int height) throws Exception {
-        new SwingEngine( this ).render("Views/StatusHintView.xml").setVisible(true);
+        new SwingEngine( this ).render("views/StatusHintView.xml").setVisible(true);
         this.setBounds(x,y,width,height);
     }
 }
