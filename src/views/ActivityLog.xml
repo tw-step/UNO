@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?views version="1.0" encoding="UTF-8"?>
 <frame name="mainframe" layout="BorderLayout" size="640,480" title="UNO">
 
     <panel constraints="BorderLayout.EAST"  >

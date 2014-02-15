@@ -5,7 +5,7 @@ import org.swixml.SwingEngine;
 import javax.swing.*;
 
 public class Starter extends JFrame {
-    private static final String DESCRIPTOR = "xml/Starter.xml";
+    private static final String DESCRIPTOR = "views/Starter.xml";
     private SwingEngine engine = new SwingEngine(this);
 
     private Starter() {

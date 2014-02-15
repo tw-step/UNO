@@ -7,7 +7,7 @@ import javax.swing.*;
 public class Color extends JDialog {
 
     public Color() throws Exception {
-        new SwingEngine( this ).render("xml/ColorDialogBox.xml").setVisible(true);
+        new SwingEngine( this ).render("views/ColorDialogBox.xml").setVisible(true);
     }
 
     public static void main(String[] args) {

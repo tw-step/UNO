@@ -5,7 +5,7 @@ import org.swixml.SwingEngine;
 import javax.swing.*;
 
 public class Draw extends JPanel {
-    private static final String DESCRIPTOR = "xml/Draw.xml";
+    private static final String DESCRIPTOR = "views/Draw.xml";
     private SwingEngine engine = new SwingEngine(this);
 
     private Draw() {
