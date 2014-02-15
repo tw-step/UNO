@@ -1,0 +1,4 @@
+<panel>
+    <button name ="draw" text="DRAW 1"/>
+    <label name="openPile" text="1"/>
+</panel>
