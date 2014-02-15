@@ -4,24 +4,11 @@ import org.swixml.SwingEngine;
 
 import javax.swing.*;
 
-public class Color extends JFrame {
-    private static final String DESCRIPTOR = "xml/ColorDialogBox.xml";
-    private SwingEngine swix;
+public class Color extends JDialog {
 
-    /** panel with a CardLayout */
-    public JPanel pnl;
-    public JPanel c1;
-
-    private Color() throws Exception {
-        swix = new SwingEngine( this );
-        swix.render( Color.DESCRIPTOR ).setVisible(true);
+    public Color() throws Exception {
+        new SwingEngine( this ).render("xml/ColorDialogBox.xml").setVisible(true);
     }
 
-    public static void main( String[] args ) {
-        try {
-            new Color();
-        } catch (Exception e) {
-            System.err.println( e.getMessage() );
-        }
-    }
 }
+

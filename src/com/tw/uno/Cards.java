@@ -5,7 +5,7 @@ import org.swixml.SwingEngine;
 import javax.swing.*;
 
 
-public class Cards extends JFrame{
+public class Cards {
 
     private static final String DESCRIPTOR = "xml/MyCards.xml";
     private SwingEngine swix = new SwingEngine( this );
