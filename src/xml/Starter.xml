@@ -1,25 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<frame size="500,100">
+<frame size="650,500">
 
-    <panel border="EmptyBorder(10,10,10,10)">
-        <layout type="FormLayout"
-                columns="right:max(40dlu;pref), 3dlu, d:grow, 7dlu, right:pref, 3dlu, d:grow"
-                rows="p, 3dlu, p, 3dlu, p, 9dlu, p, 3dlu, p, 3dlu, p"
-                columnGroups="1,5; 3,7" />
+    <panel>
 
         <label constraints="BorderLayout.NORHT" text="Game Master:"/>
         <textfield id="masterName" columns="20" Text=""/>
         <label constraints="BorderLayout.CENTER" text="Name:"/>
         <textfield id="name" columns="20" rows="3" Text=""/>
 
-        <menubar>
-            <menu text="Settings">
-                <menuitem text="No of Players"/>
-                <menuitem text="No of Packs"/>
-            </menu>
-        </menubar>
-
         <button id="join" constraints="BorderLayout.SOUTH" text="Join"/>
     </panel>
 
-</frame>
+</frame>	
