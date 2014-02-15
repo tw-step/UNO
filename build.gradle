@@ -10,7 +10,8 @@ mainClassName="com.tw.uno.Main" // Change it to your main class
 repositories { mavenCentral() }
 
 dependencies {
-    testCompile 'junit:junit:4.10'
+    testCompile 'junit:junit:4.10','com.jgoodies:forms:1.2.1'
+
 }
 
 sourceSets {
