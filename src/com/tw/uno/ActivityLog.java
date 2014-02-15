@@ -4,26 +4,18 @@ import org.swixml.SwingEngine;
 
 import javax.swing.*;
 
-
-public class Cards extends JFrame {
-
-    private static final String DESCRIPTOR = "xml/MyCards.xml";
+public class ActivityLog extends JFrame{
+    private static final String DESCRIPTOR = "xml/ActivityLog.xml";
     private SwingEngine swix = new SwingEngine( this );
 
-    /** panel with a CardLayout */
-    public JPanel pnl;
-
-    private Cards() throws Exception {
-        swix.render( Cards.DESCRIPTOR ).setVisible(true);
+    public ActivityLog() throws Exception {
+        swix.render( ActivityLog.DESCRIPTOR ).setVisible(true);
     }
-
     public static void main( String[] args ) {
         try {
-            new Cards();
+            new ActivityLog();
         } catch (Exception e) {
             System.err.println( e.getMessage() );
         }
     }
-
-
 }
