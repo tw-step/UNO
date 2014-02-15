@@ -5,7 +5,7 @@ import org.swixml.SwingEngine;
 import javax.swing.*;
 
 public class ActivityLog extends JFrame{
-    private static final String DESCRIPTOR = "views/ActivityLog.xml";
+    private static final String DESCRIPTOR = "xml/ActivityLog.xml";
     private SwingEngine swix = new SwingEngine( this );
 
     public ActivityLog() throws Exception {

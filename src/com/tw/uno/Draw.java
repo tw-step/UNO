@@ -3,10 +3,9 @@ package com.tw.uno;
 import org.swixml.SwingEngine;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class Draw extends JPanel {
-    private static final String DESCRIPTOR = "views/Draw.xml";
+    private static final String DESCRIPTOR = "xml/Draw.xml";
     private SwingEngine engine = new SwingEngine(this);
 
     private Draw() {

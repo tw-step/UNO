@@ -7,7 +7,7 @@ import javax.swing.*;
 
 public class MyCards extends JFrame {
 
-    private static final String DESCRIPTOR = "views/MyCards.xml";
+    private static final String DESCRIPTOR = "xml/MyCards.xml";
     private SwingEngine swix = new SwingEngine( this );
 
     /** panel with a CardLayout */
