@@ -1,4 +1,4 @@
-<?Views version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <frame name="mainframe" layout="BorderLayout" size="640,480" title="UNO" plaf="com.sun.java.swing.plaf.windows.WindowsLookAndFeel">
     <panel id="pnl" Layout="CardLayout(10,10)" Border="EtchedBorder">
 
