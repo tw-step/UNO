@@ -4,18 +4,10 @@ import org.swixml.SwingEngine;
 
 import javax.swing.*;
 
-public class ActivityLog extends JFrame{
-    private static final String DESCRIPTOR = "views/ActivityLog.xml";
-    private SwingEngine swix = new SwingEngine( this );
+public class ActivityLog extends JPanel {
 
     public ActivityLog() throws Exception {
-        swix.render( ActivityLog.DESCRIPTOR ).setVisible(true);
+        new SwingEngine(this).render("views/ActivityLog.xml").setVisible(true);
     }
-    public static void main( String[] args ) {
-        try {
-            new ActivityLog();
-        } catch (Exception e) {
-            System.err.println( e.getMessage() );
-        }
-    }
+
 }

@@ -1,4 +1,4 @@
-<internalframe Title="Status Hint" Visible="true" Resizable="true" background="pink">
+<panel Title="Status Hint" Visible="true" Resizable="true">
     <label name="number-card" text="You can play a numbered card" size="200,200"/>
     <label name="plus-two-card" text="You can play a plus two card" size="10,10"/>
-</internalframe>
+</panel>

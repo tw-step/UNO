@@ -1,27 +1,24 @@
-<frame name="mainframe" layout="BorderLayout" size="640,480" title="UNO">
+<panel background="222222">
+    <scrollpane visible="true" enable="true" HorizontalScrollBarPolicy="HORIZONTAL_SCROLLBAR_AS_NEEDED"
+                VerticalScrollBarPolicy="VERTICAL_SCROLLBAR_NEVER"
+                PreferredSize="750, 180">
 
-    <panel constraints="BorderLayout.SOUTH" >
-        <scrollpane visible="true" enable="true" HorizontalScrollBarPolicy="HORIZONTAL_SCROLLBAR_AS_NEEDED"
-                    VerticalScrollBarPolicy="VERTICAL_SCROLLBAR_NEVER"
-                    PreferredSize="400, 50">
+        <panel>
 
-            <panel Font="Comic Sans MS-BOLD-16">
+            <button Text="1" Foreground="black" Background="red" PreferredSize="100,150"   Font="VERDANA-22" />
+            <button Text="reverse" Foreground="black" Background="green" PreferredSize="100,150"  Font="VERDANA-22" />
+            <button Text="skip" Foreground="black" Background="yellow" PreferredSize="100,150"  Font="VERDANA-22" />
+            <button Text="+2" Foreground="black" Background="blue" PreferredSize="100,150"  Font="VERDANA-22" />
+            <button Text="+4" Foreground="black" Background="white" PreferredSize="100,150"  Font="VERDANA-22" />
+            <button Text="skip" Foreground="black" Background="yellow" PreferredSize="100,150"  Font="VERDANA-22" />
+            <button Text="+2" Foreground="black" Background="blue" PreferredSize="100,150"  Font="VERDANA-22" />
+            <button Text="reverse" Foreground="black" Background="green" PreferredSize="100,150"  Font="VERDANA-22" />
+            <button Text="skip" Foreground="black" Background="yellow" PreferredSize="100,150"  Font="VERDANA-22" />
+            <button Text="+2" Foreground="black" Background="red" PreferredSize="100,150"  Font="VERDANA-22" />
 
-                <button Text="1" Foreground="black" Background="red" size="12"/>
-                <button Text="reverse" Foreground="black" Background="green" size="12"/>
-                <button Text="skip" Foreground="black" Background="yellow" size="12"/>
-                <button Text="+2" Foreground="black" Background="blue" size="12"/>
-                <button Text="reverse" Foreground="black" Background="green" size="12"/>
-                <button Text="skip" Foreground="black" Background="yellow" size="12"/>
-                <button Text="+2" Foreground="black" Background="blue" size="12"/>
-                <button Text="reverse" Foreground="black" Background="green" size="12"/>
-                <button Text="skip" Foreground="black" Background="yellow" size="12"/>
-                <button Text="+2" Foreground="black" Background="blue" size="12"/>
+        </panel>
+    </scrollpane>
 
-            </panel>
-        </scrollpane>
+    <button Text="UNO"  PreferredSize="80,70"  Font="VERDANA-16" />
+</panel>
 
-        <button Text="UNO"/>
-    </panel>
-
-</frame>
