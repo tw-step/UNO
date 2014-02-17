@@ -5,17 +5,17 @@ import org.swixml.SwingEngine;
 import javax.swing.*;
 
 
-public class Players extends JFrame {
+public class WaitingWindow extends JFrame{
 
-    public Players() {
+    public WaitingWindow() {
         try {
-            new SwingEngine(this).render("players.xml").setVisible(true);
+            new SwingEngine(this).render("views/WaitingWindow.xml").setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public static void main(String[] args) throws Exception{
-            new Players();
+        new WaitingWindow();
     }
 }

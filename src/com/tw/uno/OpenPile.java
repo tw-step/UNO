@@ -5,17 +5,17 @@ import org.swixml.SwingEngine;
 import javax.swing.*;
 
 
-public class Players extends JFrame {
+public class OpenPile extends JFrame{
 
-    public Players() {
+    public OpenPile() {
         try {
-            new SwingEngine(this).render("players.xml").setVisible(true);
+            new SwingEngine(this).render("views/OpenPile.xml").setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public static void main(String[] args) throws Exception{
-            new Players();
+        new OpenPile();
     }
 }
