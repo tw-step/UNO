@@ -8,30 +8,42 @@ import java.awt.event.ActionEvent;
 
 public class Settings extends JFrame {
 
-    JTextField noOfPlayers;
-    JTextField noOfPacks;
-    JButton start;
+    private JTextField noOfPlayers;
+    private JTextField noOfPacks;
+    private JButton start;
+    private int numberOfPlayers;
+    private int numberOfPacks;
+    SwingEngine swingEngine;
 
     public Settings() {
-        SwingEngine swingEngine;
         try {
             swingEngine = new SwingEngine(this);
             swingEngine.render("views/Settings.xml").setVisible(true);
-            swingEngine.setActionListener(start, OnClick);
+            swingEngine.setActionListener(start, onStart);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    Action OnClick = new AbstractAction() {
+    Action onStart = new AbstractAction() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            int numberOfPlayers = Integer.parseInt(noOfPlayers.getText());
-            int numberOfPacks = Integer.parseInt(noOfPacks.getText());
-            System.out.println(numberOfPacks + "   " + numberOfPlayers);
+            numberOfPlayers = Integer.parseInt(noOfPlayers.getText());
+            numberOfPacks = Integer.parseInt(noOfPacks.getText());
+            System.out.println(numberOfPacks + "  " + numberOfPacks);
+            try {
+               new WaitingWindow();
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
         }
     };
-    public static void main(String[] args) throws Exception {
-        new Settings();
+
+    public int getNumberOfPlayers() {
+        return numberOfPlayers;
+    }
+
+    public int getNumberOfPacks() {
+        return numberOfPacks;
     }
 }

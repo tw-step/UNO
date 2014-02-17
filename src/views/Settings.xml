@@ -9,7 +9,7 @@
             <label text="Number of packs:   "/>
             <textfield id="noOfPacks" Text="" preferredsize="50,10"/>
 
-            <button id="start" text="START" />
+            <button id="start" text="START" Action="onStart"/>
 
         </hbox>
     </panel>
