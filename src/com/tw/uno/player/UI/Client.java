@@ -1,4 +1,4 @@
-package com.tw.uno;
+package com.tw.uno.player.UI;
 
 import javax.swing.*;
 import java.awt.Color;

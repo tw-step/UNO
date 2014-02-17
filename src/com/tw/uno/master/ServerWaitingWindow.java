@@ -1,7 +1,7 @@
-package com.tw.uno;
+package com.tw.uno.master;
 
-import com.tw.uno.serverChannel.ChannelFactory;
-import com.tw.uno.serverChannel.GameServer;
+import com.tw.uno.player.UI.WaitingWindow;
+import com.tw.uno.desk.ChannelFactory;
 import org.swixml.SwingEngine;
 
 import javax.swing.*;

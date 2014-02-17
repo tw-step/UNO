@@ -1,7 +1,7 @@
-package com.tw.uno;
+package com.tw.uno.player.UI;
 
-import com.tw.uno.clientChannel.Player;
-import com.tw.uno.serverChannel.ChannelFactory;
+import com.tw.uno.desk.ChannelFactory;
+import com.tw.uno.player.Player;
 import org.swixml.SwingEngine;
 
 import javax.swing.*;

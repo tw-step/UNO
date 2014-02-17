@@ -1,4 +1,4 @@
-package com.tw.uno.serverChannel;
+package com.tw.uno.desk;
 
 public interface ChannelListener {
     void onError(Channel client, Exception e);

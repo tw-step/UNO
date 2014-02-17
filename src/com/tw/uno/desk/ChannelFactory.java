@@ -1,4 +1,6 @@
-package com.tw.uno.serverChannel;
+package com.tw.uno.desk;
+
+import com.tw.uno.master.GameServer;
 
 import java.io.IOException;
 import java.net.ServerSocket;

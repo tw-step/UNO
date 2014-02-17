@@ -5,7 +5,7 @@ apply plugin: 'idea'
 group = "com.tw.uno"
 version = "0.1"
 
-mainClassName = "com.tw.uno.Starter" // Change it to your main class
+mainClassName = "com.tw.uno.player.UI.Starter" // Change it to your main class
 
 repositories { mavenCentral() }
 

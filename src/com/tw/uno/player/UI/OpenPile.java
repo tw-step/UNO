@@ -1,21 +1,21 @@
-package com.tw.uno;
+package com.tw.uno.player.UI;
 
 import org.swixml.SwingEngine;
 
 import javax.swing.*;
 
 
-public class ClosePile extends JFrame{
+public class OpenPile extends JFrame{
 
-    public ClosePile() {
+    public OpenPile() {
         try {
-            new SwingEngine(this).render("views/ClosePile.xml").setVisible(true);
+            new SwingEngine(this).render("views/OpenPile.xml").setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public static void main(String[] args) throws Exception{
-        new ClosePile();
+        new OpenPile();
     }
 }

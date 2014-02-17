@@ -1,21 +1,21 @@
-package com.tw.uno;
+package com.tw.uno.player.UI;
 
 import org.swixml.SwingEngine;
 
 import javax.swing.*;
 
 
-public class FinishPage extends JFrame{
+public class ClosePile extends JFrame{
 
-    public FinishPage() {
+    public ClosePile() {
         try {
-            new SwingEngine(this).render("views/FinishPage.xml").setVisible(true);
+            new SwingEngine(this).render("views/ClosePile.xml").setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public static void main(String[] args) throws Exception{
-        new FinishPage();
+        new ClosePile();
     }
 }

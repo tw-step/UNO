@@ -1,8 +1,8 @@
-package com.tw.uno.clientChannel;
+package com.tw.uno.player;
 
-import com.tw.uno.serverChannel.Channel;
-import com.tw.uno.serverChannel.ChannelFactory;
-import com.tw.uno.serverChannel.ChannelListener;
+import com.tw.uno.desk.Channel;
+import com.tw.uno.desk.ChannelFactory;
+import com.tw.uno.desk.ChannelListener;
 
 public class Player implements ChannelListener {
     private ChannelFactory factory ;
