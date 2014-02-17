@@ -1,0 +1,77 @@
+import org.swixml.SwingEngine;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+/**
+ * The Actions class shows how to use the
+ * <code>Actions</code> and <code>ActionCommand</code> attributes
+ *
+ * @author <a href="mailto:wolf@paulus.com">Wolf Paulus</a>
+ * @version $Revision: 1.1 $
+ * @since swixml #065
+ */
+public class Actions extends WindowAdapter implements ActionListener {
+  private SwingEngine swix;
+
+  public JMenuItem mi_exit, mi_save;
+  public JPanel pnl_North;
+  public Action newAction = new AbstractAction() {
+
+    public void actionPerformed(ActionEvent e) {
+      System.out.println( "New" ); // show the access outer class member ..
+      this.setEnabled( false ); // disables ALL buttons that are tied to this action
+    }
+  };
+
+  public Action openAction = new AbstractAction() {
+    /** Invoked when an action occurs. */
+    public void actionPerformed(ActionEvent e) {
+      System.out.println( "Open" );
+    }
+  };
+
+  public Action petAction = new AbstractAction() {
+     public void actionPerformed(ActionEvent e) {
+       System.out.println( ((JComboBox) e.getSource()).getSelectedItem().toString() );
+     }
+   };
+
+  private Actions() {
+    try {
+      swix = new SwingEngine( this );
+      swix.render( "xml/actions.xml" );
+      swix.setActionListener( pnl_North, this );
+      mi_exit.addActionListener( this );
+      mi_save.addActionListener( this );
+
+      swix.getRootComponent().setVisible(true);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+  public void actionPerformed(ActionEvent e) {
+    String command = e.getActionCommand();
+    if ("AC_EXIT".equals( command )) {
+      this.windowClosing( null );
+    } else if ("AC_SAVE".equals( command )) {
+      System.out.println( "Save" );
+    } else {
+      System.out.println( "Click" );
+    }
+  }
+
+  public void windowClosing(WindowEvent e) {
+    System.out.println( "Good Bye!" );
+    super.windowClosing(e);
+    System.exit( 0 );
+  }
+
+  public static void main(String[] args) {
+    SwingEngine.DEBUG_MODE=true;
+    new Actions();
+  }
+}
