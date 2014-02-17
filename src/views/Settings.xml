@@ -1,0 +1,17 @@
+<frame size="700,500">
+
+    <panel Bounds="100,255,100,200">
+        <hbox border="TitledBorder(Enter credentials to setup the game)">
+
+            <label text="Number of players:  "/>
+            <textfield id="noOfPlayers" Text="" preferredsize="50,10"/>
+
+            <label text="Number of packs:   "/>
+            <textfield id="noOfPacks" Text="" preferredsize="50,10"/>
+
+            <button id="start" text="START" />
+
+        </hbox>
+    </panel>
+
+</frame>

@@ -5,15 +5,18 @@ apply plugin: 'idea'
 group = "com.tw.uno"
 version = "0.1"
 
-mainClassName="com.tw.uno.Main" // Change it to your main class
+mainClassName="com.tw.uno.Starter" // Change it to your main class
 
 repositories { mavenCentral() }
 
 dependencies {
-
-    testCompile 'junit:junit:4.10',
-            'org.jdom:jdom:1.1',
+    compile 'org.jdom:jdom:1.1',
             'org.swixml:swixml:2.6.20130530'
+
+    runtime 'org.jdom:jdom:1.1',
+            'org.swixml:swixml:2.6.20130530'
+
+    testCompile 'junit:junit:4.10'
 }
 
 sourceSets {
