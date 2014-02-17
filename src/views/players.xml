@@ -1,8 +1,8 @@
-<panel background="ee4444">
+<panel background="003300" >
 
     <scrollpane visible="true" enable="true" HorizontalScrollBarPolicy="HORIZONTAL_SCROLLBAR_AS_NEEDED"
                 VerticalScrollBarPolicy="VERTICAL_SCROLLBAR_NEVER"
-                PreferredSize="1270, 120">
+                PreferredSize="1400, 120">
 
         <panel>
             <hbox border="TitledBorder(Click on player to CATCH)">
