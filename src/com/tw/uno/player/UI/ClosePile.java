@@ -5,17 +5,10 @@ import org.swixml.SwingEngine;
 import javax.swing.*;
 
 
-public class ClosePile extends JFrame{
+public class ClosePile extends JPanel {
 
-    public ClosePile() {
-        try {
-            new SwingEngine(this).render("views/ClosePile.xml").setVisible(true);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public ClosePile() throws Exception {
+        new SwingEngine(this).render("views/ClosePile.xml").setVisible(true);
     }
 
-    public static void main(String[] args) throws Exception{
-        new ClosePile();
-    }
 }

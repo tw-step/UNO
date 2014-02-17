@@ -1,4 +1,4 @@
 <panel Title="Status Hint" Visible="true" Resizable="true">
-    <label name="number-card" text="You can play a numbered card" size="200,200"/>
-    <label name="plus-two-card" text="You can play a plus two card" size="10,10"/>
+    <label name="number-card" text="You can play a numbered card" Font="VERDANA-BOLD-16"/>
+    <label name="plus-two-card" text="You can play a plus two card" Font="VERDANA-BOLD-16"/>
 </panel>
