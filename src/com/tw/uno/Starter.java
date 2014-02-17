@@ -1,5 +1,7 @@
 package com.tw.uno;
 
+import com.tw.uno.clientChannel.Player;
+import com.tw.uno.serverChannel.ChannelFactory;
 import org.swixml.SwingEngine;
 
 import javax.swing.*;
@@ -9,6 +11,8 @@ public class Starter extends JFrame {
     private static final String DESCRIPTOR = "views/Starter.xml";
     private SwingEngine engine = new SwingEngine(this);
 
+    JTextField masterName;
+    JTextField name;
     JButton join;
 
     private Starter() {
@@ -24,8 +28,12 @@ public class Starter extends JFrame {
     Action OnClick = new AbstractAction() {
         @Override
         public void actionPerformed(ActionEvent e) {
+            String serverAddress = masterName.getText();
+            String playerName = name.getText();
             new ClientWaitingWindow();
-            new Client();
+
+            new Player(new ChannelFactory(),playerName).connectTo(serverAddress);
+
         }
     };
 

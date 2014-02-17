@@ -1,4 +1,4 @@
-package com.tw.uno.channel;
+package com.tw.uno.serverChannel;
 
 public interface GameServerListener {
     void onNewConnection(Channel channel);

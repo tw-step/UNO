@@ -1,7 +1,7 @@
 package com.tw.uno;
 
-import com.tw.uno.channel.Channel;
-import com.tw.uno.channel.GameServerListener;
+import com.tw.uno.serverChannel.Channel;
+import com.tw.uno.serverChannel.GameServerListener;
 import org.swixml.SwingEngine;
 
 import javax.swing.*;
@@ -24,7 +24,6 @@ public class WaitingWindow extends JFrame implements GameServerListener {
     @Override
     public void onNewConnection(Channel channel) {
         numberOfPlayersLeft--;
-        System.out.println("kajal said \"i want to say som...\"");
     }
 
     @Override

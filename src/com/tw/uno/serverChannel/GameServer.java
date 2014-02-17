@@ -1,4 +1,4 @@
-package com.tw.uno.channel;
+package com.tw.uno.serverChannel;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -34,7 +34,7 @@ public class GameServer {
         serverSocket = channelFactory.createServerSocket();
     }
 
-    public void startListeningForConnections(GameServerListener listener) {
+    public void startGame(GameServerListener listener) {
         stopRunningThread();
         this.listener = listener;
         startAcceptThread();

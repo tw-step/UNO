@@ -1,4 +1,4 @@
-package com.tw.uno.channel;
+package com.tw.uno.serverChannel;
 
 import java.io.*;
 import java.net.Socket;
