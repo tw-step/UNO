@@ -1,6 +1,6 @@
 <frame size="700,500">
 
-    <panel Bounds="100,255,100,200">
+    <panel Bounds="100,255,200,200">
         <hbox border="TitledBorder(Enter credentials to setup the game)">
 
             <label text="Number of players:  "/>
