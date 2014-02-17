@@ -2,7 +2,7 @@
 
     <scrollpane visible="true" enable="true" VerticalScrollBarPolicy="VERTICAL_SCROLLBAR_ALWAYS"
                 HorizontalScrollBarPolicy="HORIZONTAL_SCROLLBAR_AS_NEEDED"
-                PreferredSize="300, 1000">
+                PreferredSize="350, 1100">
 
         <panel FlowLayout="FlowLayout.LEFT">
             <label text="ACTIVITY LOG"/>

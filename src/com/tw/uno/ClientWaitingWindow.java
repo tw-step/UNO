@@ -10,11 +10,10 @@ public class ClientWaitingWindow extends JFrame{
     public ClientWaitingWindow() {
         try {
             new SwingEngine(this).render("views/WaitingWindow.xml").setVisible(true);
-            Thread.sleep(5000);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        new Client();
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
 }
