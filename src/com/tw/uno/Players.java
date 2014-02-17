@@ -2,8 +2,10 @@ package com.tw.uno;
 
 import org.swixml.SwingEngine;
 
+import javax.swing.*;
 
-public class Players {
+
+public class Players extends JFrame {
 
     public Players() {
         try {
