@@ -1,37 +1,35 @@
 package com.tw.uno;
 
 import javax.swing.*;
+import java.awt.Color;
 
 public class Client extends JFrame {
 
-//    private StatusHint statusHint;
     private Players players;
     private ActivityLog activityLog;
     private MyCards myCards;
-//    private Draw draw;
+    private JPanel bgPanel = new JPanel();
 
     public Client() {
         try {
             activityLog = new ActivityLog();
             myCards = new MyCards();
-//            statusHint = new StatusHint(700, 700, 200, 100);
             players = new Players();
-//            draw = new Draw();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        activityLog.setBounds(1350, 0, 310, 1010);
-        players.setBounds(40, 0, 1300, 180);
-//        draw.setBounds(0,0,100,100);
+        activityLog.setBounds(1550, 5, 360, 1110);
+        players.setBounds(40, 0, 1500, 180);
 
-        myCards.setBounds(350, 800, 850, 300);
+        myCards.setBounds(400, 925, 850, 190);
+
+        bgPanel.setBackground(new Color(3, 128, 4));
 
         add(activityLog);
-        add(myCards);
         add(players);
-//        add(statusHint);
-//        add(draw);
+        add(myCards);
+        add(bgPanel);
 
         setVisible(true);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -40,4 +38,5 @@ public class Client extends JFrame {
     public static void main(String[] args) {
         new Client();
     }
+
 }

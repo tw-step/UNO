@@ -8,9 +8,7 @@ import java.awt.event.ActionEvent;
 public class Starter extends JFrame {
     private static final String DESCRIPTOR = "views/Starter.xml";
     private SwingEngine engine = new SwingEngine(this);
-    
-    JTextField masterName;
-    JTextField name;
+
     JButton join;
 
     private Starter() {
@@ -26,11 +24,8 @@ public class Starter extends JFrame {
     Action OnClick = new AbstractAction() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            String serverIp = (masterName.getText());
-            String clientName = (name.getText());
-            System.out.println(clientName + "   " + serverIp);
-//            new WaitingWindow();
             new ClientWaitingWindow();
+            new Client();
         }
     };
 
