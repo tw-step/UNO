@@ -30,20 +30,11 @@ public class Settings extends JFrame {
         public void actionPerformed(ActionEvent e) {
             numberOfPlayers = Integer.parseInt(noOfPlayers.getText());
             numberOfPacks = Integer.parseInt(noOfPacks.getText());
-            System.out.println(numberOfPacks + "  " + numberOfPacks);
             try {
-               new WaitingWindow();
+               new ServerWaitingWindow(numberOfPlayers,numberOfPacks);
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
         }
     };
-
-    public int getNumberOfPlayers() {
-        return numberOfPlayers;
-    }
-
-    public int getNumberOfPacks() {
-        return numberOfPacks;
-    }
 }
