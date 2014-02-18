@@ -6,16 +6,13 @@
 
         <panel>
             <hbox border="TitledBorder(Click on player to CATCH)">
-                <button text="Player  :  8" Font="VERDANA-22" foreground="red"/>
-                <button text="Player  :  8" Font="VERDANA-22" foreground="black"/>
-                <button text="Player  :  8" Font="VERDANA-22" foreground="black"/>
-                <button text="Player  :  8" Font="VERDANA-22" foreground="black"/>
-                <button text="Player  :  8" Font="VERDANA-22" foreground="black"/>
-                <button text="Player  :  8" Font="VERDANA-22" foreground="black"/>
-                <button text="Player  :  8" Font="VERDANA-22" foreground="black"/>
-                <button text="Player  :  8" Font="VERDANA-22" foreground="black"/>
-                <button text="Player  :  8" Font="VERDANA-22" foreground="black"/>
-                <button text="Player  :  8" Font="VERDANA-22" foreground="black"/>
+                <button text="Suraj" Font="VERDANA-22" foreground="red"/>
+                <button text="Kajal" Font="VERDANA-22" foreground="black"/>
+                <button text="Shweta" Font="VERDANA-22" foreground="black"/>
+                <button text="Prajakta" Font="VERDANA-22" foreground="black"/>
+                <button text="Mohit" Font="VERDANA-22" foreground="black"/>
+                <button text="Tanbir" Font="VERDANA-22" foreground="black"/>
+                <button text="Taj" Font="VERDANA-22" foreground="black"/>
             </hbox>
         </panel>
     </scrollpane>
