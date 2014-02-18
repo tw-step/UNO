@@ -6,8 +6,7 @@ import com.tw.uno.desk.ChannelListener;
 
 public class Player implements ChannelListener {
     private ChannelFactory factory ;
-    private String name;
-    private ChannelListener listener;
+    public String name;
 
     public Player(ChannelFactory factory, String name) {
         this.factory = factory;

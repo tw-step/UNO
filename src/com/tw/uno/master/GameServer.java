@@ -40,6 +40,7 @@ public class GameServer {
     public void startGame(GameServerListener listener) {
         stopRunningThread();
         this.listener = listener;
+        System.out.println("start game listener");
         startAcceptThread();
     }
 

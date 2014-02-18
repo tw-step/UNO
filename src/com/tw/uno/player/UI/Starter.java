@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 
 public class Starter extends JFrame {
     private static final String DESCRIPTOR = "views/Starter.xml";
-    private SwingEngine engine = new SwingEngine(this);
+    private SwingEngine engine = new SwingEngine<>(this);
 
     JTextField masterName;
     JTextField name;
