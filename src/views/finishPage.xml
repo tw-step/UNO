@@ -1,16 +1,14 @@
 <frame size="640,800" title="FinalScoreCard">
     <panel>
-    <label   text = "Game Over"/>
-    </panel>
-
-    <panel >
-    <scrollpane constraints="BorderLayout.CENTER" enabled="false">
-
-        <table id="FinalScoreCard" cellSelectionEnabled="true" showGrid="true" showHorizontalLines="true" showVerticalLines="true">
-            <tableColumn bindWith="name" header="Name" type="java.lang.String" headerValue="Name" resizable="false"/>
-            <tableColumn bindWith="card" header="Cards" type="java.lang.Integer" headerValue="Cards" resizable="false"/>
-            <tableColumn bindWith="point" header="Points" type="java.lang.Integer" headerValue="Points" resizable="true"/>
-        </table>
-    </scrollpane>
+        <panel layout="GridLayout(3,3)">
+            <label text="Name" Font="VERDANA-18" foreground="black"/>
+            <label text="Cards" Font="VERDANA-18" foreground="black"/>
+            <label text="Points" Font="VERDANA-18" foreground="black"/>
+        </panel>
+        <panel layout="GridLayout(3,3)">
+            <textField value="name" text="               " editable="false"/>
+            <textField value="cards" text="               " editable="false"/>
+            <textField value="points" text="               " editable="false"/>
+        </panel>
     </panel>
 </frame>

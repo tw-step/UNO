@@ -4,7 +4,6 @@ import org.swixml.SwingEngine;
 
 import javax.swing.*;
 
-
 public class FinishPage extends JFrame{
 
     public FinishPage() {
