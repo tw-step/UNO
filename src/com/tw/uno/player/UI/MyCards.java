@@ -6,7 +6,7 @@ import javax.swing.*;
 
 public class MyCards extends JPanel {
     public MyCards() throws Exception {
-        new SwingEngine(this).render("views/MyCards.xml").setVisible(true);
+        new SwingEngine<>(this).render("views/MyCards.xml").setVisible(true);
     }
 
 }

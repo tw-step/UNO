@@ -7,7 +7,7 @@ import javax.swing.*;
 public class ActivityLog extends JPanel {
 
     public ActivityLog() throws Exception {
-        new SwingEngine(this).render("views/ActivityLog.xml").setVisible(true);
+        new SwingEngine<>(this).render("views/ActivityLog.xml").setVisible(true);
     }
 
 }

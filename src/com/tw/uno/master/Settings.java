@@ -17,7 +17,7 @@ public class Settings extends JFrame {
 
     public Settings() {
         try {
-            swingEngine = new SwingEngine(this);
+            swingEngine = new SwingEngine<>(this);
             swingEngine.render("views/Settings.xml").setVisible(true);
             swingEngine.setActionListener(start, onStart);
         } catch (Exception e) {

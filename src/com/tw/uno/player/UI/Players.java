@@ -9,7 +9,7 @@ public class Players extends JPanel {
 
     public Players() {
         try {
-            new SwingEngine(this).render("views/players.xml").setVisible(true);
+            new SwingEngine<>(this).render("views/players.xml").setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
         }

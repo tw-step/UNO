@@ -9,7 +9,7 @@ public class FinishPage extends JFrame{
 
     public FinishPage() {
         try {
-            new SwingEngine(this).render("views/FinishPage.xml").setVisible(true);
+            new SwingEngine<>(this).render("views/FinishPage.xml").setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
         }

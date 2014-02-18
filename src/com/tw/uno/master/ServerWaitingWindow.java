@@ -10,7 +10,7 @@ public class ServerWaitingWindow extends JFrame {
     public ServerWaitingWindow(int numberOfPlayers, int numberOfPacks) {
         try {
 
-            new SwingEngine(this).render("views/WaitingWindow.xml").setVisible(true);
+            new SwingEngine<>(this).render("views/WaitingWindow.xml").setVisible(true);
             GameServer uno = new GameServer(new ChannelFactory());
             uno.startGame(new WaitingWindow(numberOfPlayers));
 
