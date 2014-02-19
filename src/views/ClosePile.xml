@@ -1,3 +1,0 @@
-<panel>
-    <button  name="draw" text="Draw Cards" Font="VERDANA-BOLD-22" visible="true"  PreferredSize="225,290" Foreground="black"/>
-</panel>

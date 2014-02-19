@@ -15,7 +15,7 @@ dependencies {
     compile('org.swixml:swixml:2.6.20130530') {
         exclude module:'jnlp'
     }
-    testCompile 'junit:junit:4.10'
+    testCompile 'junit:junit:4.10','org.mockito:mockito-all:1.9.5'
 }
 
 sourceSets {
