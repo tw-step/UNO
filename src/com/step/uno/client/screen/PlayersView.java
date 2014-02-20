@@ -1,13 +1,14 @@
 package com.step.uno.client.screen;
 
-import com.step.uno.client.controller.GameClientController;
-import com.step.uno.client.controller.PlayerActionListener;
+import com.step.uno.client.model.GameClient;
 import com.step.uno.client.view.PlayerView;
 import com.step.uno.messages.Snapshot;
 import com.step.uno.model.PlayerSummary;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class PlayersView extends JPanel implements PlayerView {
@@ -18,11 +19,12 @@ public class PlayersView extends JPanel implements PlayerView {
     private JLabel direction = new JLabel();
 
     private ArrayList<JButton> players = new ArrayList<>();
+    private GameClient gameClient;
 
-    public PlayersView(Snapshot snapshot) {
-
+    public PlayersView(GameClient gameClient,Snapshot snapshot) {
+        this.gameClient = gameClient;
+        
         createPlayerButtons(snapshot.playerSummaries);
-
         setDirection(snapshot.isInAscendingOrder);
 
         playerNames.setVisible(true);
@@ -51,7 +53,15 @@ public class PlayersView extends JPanel implements PlayerView {
         for (PlayerSummary summary : summaries) {
             players.add(new JButton(summary.name + " : " + summary.cardsInHand));
             JButton playerButton = players.get(players.size() - 1);
-            playerButton.addActionListener(new PlayerActionListener(players.indexOf(playerButton)));
+            final int playerIndex1 = players.indexOf(playerButton);
+            playerButton.addActionListener(new ActionListener() {
+                private int playerIndex = playerIndex1;
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    gameClient.catchUno(playerIndex);
+                }
+            });
             playerNames.add(playerButton);
         }
     }
@@ -67,7 +77,7 @@ public class PlayersView extends JPanel implements PlayerView {
         for (int i = 0; i < players.size(); i++) {
             players.get(i).setText(summaries[i].name + " : " + summaries[i].cardsInHand);
         }
-
+        setDirection(snapshot.isInAscendingOrder);
     }
 }
 

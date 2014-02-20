@@ -22,7 +22,7 @@ public class PlayerScreen extends JFrame implements PlayerView {
 
         openPile = new OpenPile(this.snapshot);
         closePile = new ClosePile(this.gameClient,this.snapshot);
-        playersView = new PlayersView(this.snapshot);
+        playersView = new PlayersView(this.gameClient,this.snapshot);
 
         openPile.setBounds(900, 400, 250, 300);
         closePile.setBounds(600, 400, 250, 300);
