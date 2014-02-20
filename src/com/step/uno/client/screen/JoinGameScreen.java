@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class JoinGameScreen extends JFrame implements JoinGameView {
+
     private GameClientController controller;
 
     //UI Components
