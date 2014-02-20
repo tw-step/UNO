@@ -51,7 +51,7 @@ public class GameClient implements MessageChannelListener {
     }
 
     public void catchUno(int playerIndex){
-        channel.send(new CatchUnoAction(playerIndex));
+        channel.send(new CatchUnoAction( playerIndex));
     }
 
     @Override
