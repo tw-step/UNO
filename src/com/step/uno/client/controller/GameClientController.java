@@ -3,6 +3,7 @@ package com.step.uno.client.controller;
 import com.step.communication.channel.MessageChannel;
 import com.step.communication.channel.MessageChannelListener;
 import com.step.communication.factory.CommunicationFactory;
+import com.step.uno.client.view.JoinGameView;
 import com.step.uno.client.view.PlayerView;
 import com.step.uno.messages.GameSnapshot;
 import com.step.uno.messages.Introduction;
@@ -11,21 +12,20 @@ import java.lang.reflect.InvocationTargetException;
 
 public class GameClientController implements MessageChannelListener {
     private CommunicationFactory factory;
-    private PlayerView view;
+    private JoinGameView joinGameView;
+    private PlayerView playerView;
     private MessageChannel channel;
 
-    public GameClientController(CommunicationFactory factory, PlayerView view) {
+    public GameClientController(CommunicationFactory factory) {
 
         this.factory = factory;
-        this.view = view;
 
     }
 
-
-    public void join(String serverAddress) {
+    public void join(String serverAddress,String playerName) {
         channel = factory.connectTo(serverAddress,this);
         channel.startListeningForMessages(this);
-        channel.send(new Introduction());
+        channel.send(new Introduction(playerName));
     }
 
     @Override
@@ -34,7 +34,8 @@ public class GameClientController implements MessageChannelListener {
     }
 
     private void handle(GameSnapshot snapshot){
-        view.update(snapshot);
+        if(playerView == null) playerView = joinGameView.switchToPlayerView();
+        playerView.update(snapshot);
     }
 
     @Override
@@ -54,6 +55,11 @@ public class GameClientController implements MessageChannelListener {
     @Override
     public void onConnectionClosed(MessageChannel client) {
         client.stop();
-        view.showDisconnected();
+        if(playerView != null)
+            playerView.showDisconnected();
+    }
+
+    public void bindView(JoinGameView joinGameView) {
+        this.joinGameView = joinGameView;
     }
 }
