@@ -3,26 +3,18 @@ apply plugin: 'application'
 apply plugin: 'idea'
 
 group = "com.tw.uno"
-version = "0.1"
 
-mainClassName = "com.tw.uno.player.UI.Starter" // Change it to your main class
+mainClassName="com.step.uno.client.UnoClient" // Change it to your main class
 
 repositories { mavenCentral() }
 
 dependencies {
-
-    compile 'org.jdom:jdom:1.1'
-    compile('org.swixml:swixml:2.6.20130530') {
-        exclude module:'jnlp'
-    }
-    testCompile 'junit:junit:4.10','org.mockito:mockito-all:1.9.5'
-
+    testCompile 'junit:junit:4.10', 'org.mockito:mockito-all:1.9.5'
 }
 
 sourceSets {
     main.java.srcDir 'src'
     test.java.srcDir 'test'
-    main.resources.srcDir 'resources'
 }
 
 task wrapper(type: Wrapper) {
@@ -32,5 +24,11 @@ task wrapper(type: Wrapper) {
 idea {
     module {
         excludeDirs += [file(".gradle"), file('gradle')]
+    }
+}
+distZip {
+    into(project.name + "/bin" ) {
+        from 'src/UnoServer.bat', 'src/UnoServer.sh'
+        include '*'
     }
 }
