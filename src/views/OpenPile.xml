@@ -1,7 +1,0 @@
-<frame name="mainframe" layout="BorderLayout" size="380,500" title="UNO">
-
-<panel>
-    <label size = "60,45" name="openPile" text="Your Cards" Font="VERDANA-BOLD-22" visible="true" Foreground="black"/>
-</panel>
-
-</frame>

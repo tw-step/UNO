@@ -1,7 +1,0 @@
-<frame name="mainframe" layout="BorderLayout" size="880,600" title="UNO">
-
-    <panel>
-        <label size = "60,45" name="openPile" text="Waiting....... Number Of People Left :  " Font="VERDANA-BOLD-22" visible="true" Foreground="black"/>
-    </panel>
-
-</frame>

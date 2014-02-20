@@ -1,5 +1,0 @@
-<frame name="mainframe" layout="BorderLayout" size="380,500" title="UNO">
-        <panel size = "45,56">
-            <button size = "45,56" name ="draw" text="Draw Cards" Font="VERDANA-BOLD-22" visible="true" Foreground="black"/>
-        </panel>
-</frame>
