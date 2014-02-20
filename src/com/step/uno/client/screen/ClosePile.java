@@ -1,20 +1,26 @@
 package com.step.uno.client.screen;
 
-import com.step.communication.channel.MessageChannel;
-import com.step.uno.messages.DrawCardAction;
+import com.step.uno.client.model.GameClient;
+import com.step.uno.messages.Snapshot;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ClosePile extends JPanel {
-    JButton draw;
-    MessageChannel communicationChannel;
-    public ClosePile(MessageChannel communicationChannel) {
 
-        this.communicationChannel = communicationChannel;
+    private JButton draw;
+    private GameClient gameClient;
+    private Snapshot snapshot;
+
+    public ClosePile(GameClient gameClient, Snapshot snapshot) {
+        this.gameClient = gameClient;
+
+        this.snapshot = snapshot;
 
         draw = new JButton("Draw Cards");
+        draw.setPreferredSize(new Dimension(150, 200));
         draw.addActionListener(new OnClick());
         add(draw);
         setVisible(true);
@@ -23,7 +29,7 @@ public class ClosePile extends JPanel {
     private class OnClick implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            communicationChannel.send(new DrawCardAction());
+            gameClient.draw();
         }
     }
 }
