@@ -26,10 +26,15 @@ public class ClosePile extends JPanel {
         setVisible(true);
     }
 
+    public void update(Snapshot snapshot) {
+        this.snapshot = snapshot;
+    }
+
     private class OnClick implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             gameClient.draw();
         }
     }
+
 }

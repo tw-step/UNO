@@ -10,12 +10,12 @@ public class PlayerScreen extends JFrame implements PlayerView {
 
 
     private GameClient gameClient;
-    private final Snapshot snapshot;
+    private Snapshot snapshot;
 
     private OpenPile openPile;
     private ClosePile closePile;
 
-    public PlayerScreen(GameClient gameClient,Snapshot snapshot) {
+    public PlayerScreen(GameClient gameClient, Snapshot snapshot) {
         this.gameClient = gameClient;
         this.snapshot = snapshot;
 
@@ -39,6 +39,7 @@ public class PlayerScreen extends JFrame implements PlayerView {
 
     @Override
     public void update(Snapshot snapshot) {
-
+        closePile.update(snapshot);
+        openPile.update(snapshot);
     }
 }

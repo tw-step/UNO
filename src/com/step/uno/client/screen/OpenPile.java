@@ -32,4 +32,10 @@ public class OpenPile extends JPanel{
 
         return colorMap.get(snapshot.openCard.colour);
     }
+
+    public void update(Snapshot snapshot) {
+        this.snapshot = snapshot;
+        openPile.setText(snapshot.openCard.sign.toString());
+        openPile.setBackground(getColor());
+    }
 }
