@@ -45,6 +45,6 @@ public class PlayerScreen extends JFrame implements PlayerView {
     public void update(Snapshot snapshot) {
         closePile.update(snapshot);
         openPile.update(snapshot);
-
+        playersView.update(snapshot);
     }
 }
