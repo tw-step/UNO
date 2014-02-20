@@ -23,7 +23,7 @@ public class PlayersView extends JPanel implements PlayerView {
 
     public PlayersView(GameClient gameClient,Snapshot snapshot) {
         this.gameClient = gameClient;
-        
+
         createPlayerButtons(snapshot.playerSummaries);
         setDirection(snapshot.isInAscendingOrder);
 
@@ -74,10 +74,16 @@ public class PlayersView extends JPanel implements PlayerView {
     @Override
     public void update(Snapshot snapshot) {
         PlayerSummary[] summaries = snapshot.playerSummaries;
+
         for (int i = 0; i < players.size(); i++) {
             players.get(i).setText(summaries[i].name + " : " + summaries[i].cardsInHand);
         }
         setDirection(snapshot.isInAscendingOrder);
+        highlightCurrentPlayer(snapshot.currentPlayerIndex);
+    }
+
+    private void highlightCurrentPlayer(int currentPlayerIndex) {
+        players.get(currentPlayerIndex).setBackground(new Color(255,0,0));
     }
 }
 
