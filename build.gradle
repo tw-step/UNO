@@ -11,12 +11,6 @@ repositories { mavenCentral() }
 
 dependencies {
 
-
-    runtime 'org.jdom:jdom:1.1',
-            'org.swixml:swixml:2.6.20130530'
-
-    testCompile 'junit:junit:4.10','org.jdom:jdom:1.1',
-            'org.swixml:swixml:2.6.20130530'
     compile 'org.jdom:jdom:1.1'
     compile('org.swixml:swixml:2.6.20130530') {
         exclude module:'jnlp'
