@@ -18,10 +18,8 @@ public class PlayersView extends JPanel implements PlayerView {
     private JLabel direction = new JLabel();
 
     private ArrayList<JButton> players = new ArrayList<>();
-    private GameClientController controller;
 
-    public PlayersView(GameClientController controller, Snapshot snapshot) {
-        this.controller = controller;
+    public PlayersView(Snapshot snapshot) {
 
         createPlayerButtons(snapshot.playerSummaries);
 
