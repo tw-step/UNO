@@ -3,6 +3,7 @@ package com.step.uno.client.controller;
 import com.step.communication.channel.MessageChannel;
 import com.step.communication.channel.MessageChannelListener;
 import com.step.communication.factory.CommunicationFactory;
+import com.step.uno.client.model.GameClient;
 import com.step.uno.client.view.JoinGameView;
 import com.step.uno.client.view.PlayerView;
 import com.step.uno.messages.Snapshot;
@@ -15,6 +16,7 @@ public class GameClientController implements MessageChannelListener {
     private JoinGameView joinGameView;
     private PlayerView playerView;
     private MessageChannel channel;
+    private GameClient gameClient;
 
     public GameClientController(CommunicationFactory factory) {
 
@@ -23,9 +25,11 @@ public class GameClientController implements MessageChannelListener {
     }
 
     public void join(String serverAddress,String playerName) {
+
         channel = factory.connectTo(serverAddress,this);
         channel.startListeningForMessages(this);
         channel.send(new Introduction(playerName));
+
     }
 
     @Override

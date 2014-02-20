@@ -13,7 +13,6 @@ public class GameClient implements MessageChannelListener {
     private String playerName;
 
     public GameClient(CommunicationFactory factory) {
-
         this.factory = factory;
     }
 
