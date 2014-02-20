@@ -58,6 +58,7 @@ public class PlayerProxy implements MessageChannelListener {
 
 
 
+
     @Override
     public void onMessage(MessageChannel client, Object message) {
         try {

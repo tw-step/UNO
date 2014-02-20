@@ -5,7 +5,7 @@ import com.step.communication.channel.MessageChannelListener;
 import com.step.communication.factory.CommunicationFactory;
 import com.step.communication.server.MessageServer;
 import com.step.communication.server.MessageServerListener;
-import com.step.uno.messages.GameSnapshot;
+import com.step.uno.messages.Snapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +39,8 @@ public class GameMasterController implements MessageServerListener, MessageChann
     }
 
     private void startGame() {
-        GameSnapshot snapshot = new GameSnapshot();
+        Snapshot snapshot = new Snapshot();
+
         for (MessageChannel channel : channels) {
             channel.send(snapshot);
         }

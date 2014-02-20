@@ -4,7 +4,7 @@ import com.step.communication.factory.CommunicationFactory;
 import com.step.uno.client.controller.GameClientController;
 import com.step.uno.client.view.JoinGameView;
 import com.step.uno.client.view.PlayerView;
-import com.step.uno.messages.GameSnapshot;
+import com.step.uno.messages.Snapshot;
 import com.step.uno.messages.Introduction;
 import org.junit.Before;
 import org.junit.Test;
@@ -40,7 +40,7 @@ public class GameClientControllerTest {
     @Test
     public void displaysGameSnapshotAsItArrives() {
         controller.join("serverAddress", "me");
-        GameSnapshot snapshot = new GameSnapshot();
+        Snapshot snapshot = new Snapshot();
         controller.onMessage(stub.channel, snapshot);
         verify(playerView, times(1)).update(snapshot);
     }

@@ -5,7 +5,7 @@ import com.step.communication.channel.MessageChannelListener;
 import com.step.communication.factory.CommunicationFactory;
 import com.step.uno.client.view.JoinGameView;
 import com.step.uno.client.view.PlayerView;
-import com.step.uno.messages.GameSnapshot;
+import com.step.uno.messages.Snapshot;
 import com.step.uno.messages.Introduction;
 
 import java.lang.reflect.InvocationTargetException;
@@ -33,7 +33,7 @@ public class GameClientController implements MessageChannelListener {
 
     }
 
-    private void handle(GameSnapshot snapshot){
+    private void handle(Snapshot snapshot){
         if(playerView == null) playerView = joinGameView.switchToPlayerView();
         playerView.update(snapshot);
     }

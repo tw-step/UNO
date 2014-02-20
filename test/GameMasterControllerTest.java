@@ -1,7 +1,7 @@
 import com.step.communication.channel.MessageChannel;
 import com.step.communication.factory.CommunicationFactory;
 import com.step.communication.server.MessageServer;
-import com.step.uno.messages.GameSnapshot;
+import com.step.uno.messages.Snapshot;
 import com.step.uno.server.controller.GameMasterController;
 import org.junit.Test;
 
@@ -18,7 +18,7 @@ public class GameMasterControllerTest {
         controller.waitForConnections();
         controller.onNewConnection(channel);
 
-        verify(channel,times(1)).send(any(GameSnapshot.class));
+        verify(channel,times(1)).send(any(Snapshot.class));
     }
     @Test
     public void rejectsConnectionsAfterAllPlayersJoin(){
@@ -29,7 +29,7 @@ public class GameMasterControllerTest {
         controller.onNewConnection(channel);
         controller.onNewConnection(lateChannel);
         verify(lateChannel,times(1)).stop();
-        verify(lateChannel,never()).send(any(GameSnapshot.class));
+        verify(lateChannel,never()).send(any(Snapshot.class));
     }
 
     class StubFactory extends CommunicationFactory{

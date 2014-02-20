@@ -3,8 +3,7 @@ package com.step.uno.client.screen;
 import com.step.uno.client.controller.GameClientController;
 import com.step.uno.client.view.JoinGameView;
 import com.step.uno.client.view.PlayerView;
-import com.step.uno.messages.GameSnapshot;
-import org.swixml.SwingEngine;
+import com.step.uno.messages.Snapshot;
 
 import javax.swing.*;
 import java.awt.*;
@@ -40,7 +39,7 @@ public class JoinGameScreen extends JFrame implements JoinGameView {
             }
 
             @Override
-            public void update(GameSnapshot snapshot) {
+            public void update(Snapshot snapshot) {
                 System.out.println("Got a snapshot");
             }
         };
@@ -53,7 +52,6 @@ public class JoinGameScreen extends JFrame implements JoinGameView {
         join.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("one two");
                 controller.join(masterName.getText(), name.getText());
             }
         });
