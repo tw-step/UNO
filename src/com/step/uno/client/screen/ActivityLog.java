@@ -5,7 +5,6 @@ import com.step.uno.messages.Snapshot;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.peer.TextFieldPeer;
 
 public class ActivityLog extends JPanel implements PlayerView {
 
