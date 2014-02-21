@@ -1,6 +1,7 @@
 package com.step.uno.client.screen;
 
 import com.step.uno.client.model.GameClient;
+import com.step.uno.client.view.PlayerView;
 import com.step.uno.messages.Snapshot;
 import com.step.uno.model.Card;
 import com.step.uno.model.Colour;
@@ -9,11 +10,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.List;
 
-public class MyCards extends JPanel {
+public class MyCards extends JPanel implements PlayerView {
     Map<Colour, Color> colors = new HashMap<>();
+    private List<Card> cards = new ArrayList<>();
     private JPanel panel = new JPanel();
     JPanel innerPanel = new JPanel();
     private JScrollPane scrollPane = new JScrollPane();
@@ -23,6 +25,7 @@ public class MyCards extends JPanel {
     public MyCards(GameClient gameClient, Snapshot snapshot) {
         this.gameClient = gameClient;
         this.snapshot = snapshot;
+        Collections.addAll(this.cards, snapshot.myCards);
         setCards();
     }
 
@@ -52,18 +55,23 @@ public class MyCards extends JPanel {
 
     private void createCards() {
         initColors();
-        panel.removeAll();
-        for (final Card card : snapshot.myCards) {
+        for (final Card card : cards) {
             JButton jButton = new JButton();
             jButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    gameClient.play(card, card.colour);
+                    if (card.colour == Colour.Black) {
+                        gameClient.play(card, card.colour);
+                    } else {
+                        gameClient.play(card);
+                    }
+                    cards.remove(card);
+                    update(snapshot);
                 }
             });
             jButton.setForeground(Color.BLACK);
             jButton.setText(card.sign.name());
-            jButton.setFont(new Font("Vardana", Font.BOLD, 24));
+            jButton.setFont(new Font("Vardana",Font.BOLD,24));
             jButton.setBackground(colors.get(card.colour));
             jButton.setPreferredSize(new Dimension(100, 150));
             jButton.setVisible(true);
@@ -79,8 +87,19 @@ public class MyCards extends JPanel {
         colors.put(Colour.Yellow, Color.yellow);
     }
 
+    @Override
+    public void showDisconnected() {
+
+    }
+
+    @Override
     public void update(Snapshot snapshot) {
-        this.snapshot = snapshot;
+
+        for (int i = cards.size(); i < snapshot.myCards.length; i++) {
+            Card card = snapshot.myCards[i];
+            cards.add(card);
+        }
+        panel.removeAll();
         createCards();
     }
 }
