@@ -38,7 +38,7 @@ public class JoinGameScreen extends JFrame implements JoinGameView {
 
         setSize(330, 370);
         setLocationRelativeTo(null);
-        panel.setBackground(new Color(225, 181, 229));
+        panel.setBackground(new Color(225, 224, 229));
         add(panel);
     }
 
