@@ -35,10 +35,12 @@ public class PlayerScreen extends JFrame implements PlayerView {
 
         openPile.setBounds(900, 400, 250, 300);
         closePile.setBounds(600, 400, 250, 300);
-        playersView.setBounds(40, 0, 1200, 300);
+       playersView.setBounds(40, 0, 1200, 300);
+        myCards.setBounds(200, 0, 900, 200);
+
+        setLayout(new BorderLayout());
         myCards.setBounds(300, 0, 900, 200);
         currentPlayer.setBounds(600,200,300,200);
-        setLayout(new BorderLayout());
         currentPlayer.add(player);
         currentPlayer.setPreferredSize(new Dimension(200, 200));
         currentPlayer.setVisible(true);
