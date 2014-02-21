@@ -27,7 +27,7 @@ idea {
     }
 }
 distZip {
-    into(project.name + "/bin" ) {
+    into("Uno-The Game" + "/bin" ) {
         from 'src/UnoServer.bat', 'src/UnoServer.sh'
         include '*'
     }
