@@ -6,7 +6,6 @@ import com.step.uno.messages.Snapshot;
 
 import javax.swing.*;
 import java.awt.*;
-import java.sql.Statement;
 
 public class PlayerScreen extends JFrame implements PlayerView {
 
@@ -42,6 +41,7 @@ public class PlayerScreen extends JFrame implements PlayerView {
         add(activityLog,BorderLayout.EAST);
         add(myCards, BorderLayout.SOUTH);
         setVisible(true);
+        setResizable(false);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
