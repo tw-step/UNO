@@ -42,7 +42,7 @@ public class PlayerScreen extends JFrame implements PlayerView {
 
     @Override
     public void showDisconnected() {
-
+        setVisible(false);
     }
 
     @Override
