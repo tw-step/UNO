@@ -55,6 +55,8 @@ public class JoinGameScreen extends JFrame implements JoinGameView {
             @Override
             public void actionPerformed(ActionEvent e) {
                 controller.join(masterName.getText(), name.getText());
+                join.setEnabled(false);
+                join.setText("Please wait...");
             }
         });
         setVisible(true);
