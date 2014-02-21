@@ -1,34 +1,28 @@
 package com.step.uno.client.model;
 
 import com.step.communication.channel.MessageChannel;
-import com.step.communication.channel.MessageChannelListener;
-import com.step.communication.factory.CommunicationFactory;
 import com.step.uno.messages.*;
 import com.step.uno.model.Card;
 import com.step.uno.model.Colour;
 
-public class GameClient implements MessageChannelListener {
-    private CommunicationFactory factory;
+public class GameClient  {
+
     private MessageChannel channel;
-    private String playerName;
 
-    public GameClient(CommunicationFactory factory) {
-        this.factory = factory;
+
+    public GameClient(MessageChannel channel) {
+        this.channel = channel;
     }
 
-    public void start(String playerName, String serverAddress) {
-        this.playerName = playerName;
-        this.channel = factory.connectTo(serverAddress, this);
-        sendIntroduction();
-    }
-
-    private void sendIntroduction() {
+    public void sendIntroduction(String playerName) {
         channel.send(new Introduction(playerName));
     }
 
-    public void play(Card card){
-        channel.send(new PlayCardAction(card));
-    }
+//    public void play(Card card){
+//        System.out.println("Card played");
+//        channel.send(new PlayCardAction(card));
+//    }
+
     public void play(Card card, Colour newColour){
         //dont allow WildDraw4 when running colour is present
         //dont allow colour change to last card when heading to last card
@@ -52,31 +46,5 @@ public class GameClient implements MessageChannelListener {
 
     public void catchUno(int playerIndex){
         channel.send(new CatchUnoAction( playerIndex));
-    }
-
-    @Override
-    public void onError(MessageChannel client, Exception e) {
-
-    }
-
-    @Override
-    public void onMessage(MessageChannel client, Object message) {
-        if(message.getClass().equals(Snapshot.class)){
-            //present snapshot on to screen
-        }
-
-        if(message.getClass().equals(GameResult.class)){
-            //present result on to screen
-        }
-
-        if(message.getClass().equals(WaitingForDrawnCardAction.class)){
-            //add new card to screen
-            //wait for 5 seconds to play that card
-            //send no NoActionOnDrawnCard message
-        }
-    }
-
-    @Override
-    public void onConnectionClosed(MessageChannel client) {
     }
 }

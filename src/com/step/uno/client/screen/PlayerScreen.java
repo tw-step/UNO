@@ -48,9 +48,9 @@ public class PlayerScreen extends JFrame implements PlayerView {
     @Override
     public void update(Snapshot snapshot) {
         this.snapshot = snapshot;
-        closePile.update(snapshot);
-        openPile.update(snapshot);
-        playersView.update(snapshot);
-        myCards.update(snapshot);
+        closePile.update(this.snapshot);
+        openPile.update(this.snapshot);
+        playersView.update(this.snapshot);
+        myCards.update(this.snapshot);
     }
 }
