@@ -6,6 +6,7 @@ import com.step.uno.messages.Snapshot;
 
 import javax.swing.*;
 import java.awt.*;
+import java.sql.Statement;
 
 public class PlayerScreen extends JFrame implements PlayerView {
 
@@ -22,30 +23,24 @@ public class PlayerScreen extends JFrame implements PlayerView {
         this.gameClient = gameClient;
         this.snapshot = snapshot;
 
-        openPile = new OpenPile(this.snapshot);
         closePile = new ClosePile(this.gameClient,this.snapshot);
         playersView = new PlayersView(this.gameClient,this.snapshot);
-        activityLog =new ActivityLog();
         myCards = new MyCards(this.gameClient,this.snapshot);
+        openPile = new OpenPile(this.snapshot);
+        activityLog =new ActivityLog();
 
         openPile.setBounds(900, 400, 250, 300);
         closePile.setBounds(600, 400, 250, 300);
-        playersView.setBounds(40, 0, 1500, 180);
-        activityLog.setBounds(1550, 5, 360, 1110);
+        playersView.setBounds(40, 0, 1200, 300);
         myCards.setBounds(300, 0, 900, 200);
-
-
-
 
         setLayout(new BorderLayout());
 
         add(openPile);
         add(closePile);
         add(playersView);
-        add(activityLog);
-        add(myCards,BorderLayout.SOUTH);
-
-
+        add(activityLog,BorderLayout.EAST);
+        add(myCards, BorderLayout.SOUTH);
         setVisible(true);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
@@ -63,6 +58,5 @@ public class PlayerScreen extends JFrame implements PlayerView {
         playersView.update(snapshot);
         activityLog.update(snapshot);
         myCards.update(snapshot);
-
     }
 }
