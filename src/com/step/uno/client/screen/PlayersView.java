@@ -54,6 +54,7 @@ public class PlayersView extends JPanel implements PlayerView {
             players.add(new JButton(summary.name + " : " + summary.cardsInHand));
             JButton playerButton = players.get(players.size() - 1);
             playerButton.setPreferredSize(new Dimension(150,100));
+            playerButton.setFont(new Font("vardana", Font.BOLD, 18));
             final int playerIndex1 = players.indexOf(playerButton);
             playerButton.addActionListener(new ActionListener() {
                 private int playerIndex = playerIndex1;
