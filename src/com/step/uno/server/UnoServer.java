@@ -9,5 +9,6 @@ public class UnoServer{
         int numberOfPacks = Integer.parseInt(args[1]);
 
         new GameMasterController(numberOfPlayers, numberOfPacks, new CommunicationFactory()).waitForConnections();
+        System.out.println("waiting for players to connect..");
     }
 }
