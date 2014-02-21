@@ -16,19 +16,29 @@ public class JoinGameScreen extends JFrame implements JoinGameView {
     private GameClientController controller;
 
     //UI Components
-    JButton join = new JButton("join");
+    JButton join = new JButton("   Join   ");
+    JLabel master = new JLabel("Master Name :");
+    JLabel playerName = new JLabel("Your Name :");
     JTextField masterName = new JTextField(15);
     JTextField name = new JTextField(15);
 
     public JoinGameScreen(GameClientController controller) {
         this.controller = controller;
         Panel panel = new Panel();
-        panel.add(masterName);
+        panel.add(master).setFont(new Font("vardana", Font.BOLD, 22));
+        panel.add(masterName).setBounds(100, 100, 100, 100);
+        panel.add(playerName).setFont(new Font("vardana", Font.BOLD, 22));
+        name.setFont(new Font("vardana", Font.BOLD, 18));
+        name.setPreferredSize(new Dimension(20, 30));
+        masterName.setPreferredSize(new Dimension(20, 30));
+        masterName.setFont(new Font("vardana", Font.BOLD, 18));
         panel.add(name);
-        panel.add(join);
+        join.setFont(new Font("vardana", Font.BOLD, 22));
+        panel.add(join).setSize(100, 500);
 
-        setSize(200, 200);
+        setSize(330, 370);
         setLocationRelativeTo(null);
+        panel.setBackground(new Color(225, 181, 229));
         add(panel);
     }
 
@@ -49,4 +59,5 @@ public class JoinGameScreen extends JFrame implements JoinGameView {
         });
         setVisible(true);
     }
+
 }
