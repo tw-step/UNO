@@ -1,49 +1,56 @@
 package com.step.uno.server.controller;
 
 import com.step.communication.channel.MessageChannel;
-import com.step.communication.channel.MessageChannelListener;
 import com.step.communication.factory.CommunicationFactory;
 import com.step.communication.server.MessageServer;
 import com.step.communication.server.MessageServerListener;
-import com.step.uno.messages.Snapshot;
+import com.step.uno.messages.GameResult;
+import com.step.uno.model.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameMasterController implements MessageServerListener, MessageChannelListener {
-    private final int numberOfPlayers;
-    private final int numberOfPacks;
-    private MessageServer messageServer;
-    private List<MessageChannel> channels = new ArrayList<>();
+public class GameMasterController implements MessageServerListener, PlayerProxyObserver {
+    private final int totalPlayers;
+    private final int totalPacks;
+    private final CommunicationFactory factory;
+    private MessageServer server;
+    private final List<PlayerProxy> proxies = new ArrayList<>();
+    private List<Player> players = new ArrayList<>();
+    private Game game;
 
-    public GameMasterController(int numberOfPlayers, int numberOfPacks,CommunicationFactory factory) {
+    public GameMasterController(int totalPlayers, int packs, CommunicationFactory factory) {
+        this.totalPlayers = totalPlayers;
+        this.totalPacks = packs;
+        this.factory = factory;
+    }
 
-        this.numberOfPlayers = numberOfPlayers;
-        this.numberOfPacks = numberOfPacks;
-        messageServer = factory.createMessageServer();
+    public void waitForConnections() {
+        server = factory.createMessageServer();
+        server.startListeningForConnections(this);
     }
 
     @Override
     public void onNewConnection(MessageChannel channel) {
-        if(isHousefull()){
+        if (proxies.size() == totalPlayers) {
             channel.stop();
             return;
         }
-        channels.add(channel);
-        channel.startListeningForMessages(this);
-        if(isHousefull())startGame();
+        System.out.println("new Connection");
+        PlayerProxy proxy = new PlayerProxy(channel, this);
+        proxy.start();
+        proxies.add(proxy);
     }
 
-    private boolean isHousefull() {
-        return channels.size() == numberOfPlayers;
+    public void startGame() {
+        game = new Game(totalPacks,players);
+        game.initialize();
+        sendSnapshot();
     }
 
-    private void startGame() {
-        Snapshot snapshot = new Snapshot();
-
-        for (MessageChannel channel : channels) {
-            channel.send(snapshot);
-        }
+    private void sendSnapshot() {
+        for (PlayerProxy proxy : proxies)
+            proxy.sendSnapshot(game);
     }
 
     @Override
@@ -51,22 +58,62 @@ public class GameMasterController implements MessageServerListener, MessageChann
 
     }
 
-    public void waitForConnections() {
-        messageServer.startListeningForConnections(this);
+    @Override
+    public void onPlayerRegistered(Player player) {
+        players.add(player);
+        if (players.size() == totalPlayers)
+            startGame();
     }
 
     @Override
-    public void onError(MessageChannel client, Exception e) {
+    public void onPlayerPlayed(Player player, Card card, Colour newColour) {
+        game.playCard(player, card, newColour);
+        if (player.hasWon())
+            sendResult();
+        else
+            sendSnapshot();
+    }
 
+    private void sendResult() {
+        GameResult result = new GameResult();
+        game.populate(result);
+        for (PlayerProxy proxy : proxies)
+            proxy.sendResult(result);
     }
 
     @Override
-    public void onMessage(MessageChannel client, Object message) {
+    public void onPlayerDrewCard(Player player) {
+        Card card = game.drawCard(player);
+        sendWaitingForDrawnCardAction(player, card);
+    }
 
+    private void sendWaitingForDrawnCardAction(Player player, Card card) {
+        for (PlayerProxy proxy : proxies) {
+            proxy.sendWaitingForDrawnCardAction(player, card);
+        }
     }
 
     @Override
-    public void onConnectionClosed(MessageChannel client) {
+    public void onPlayerDeclaredUno(Player player) {
+        game.declareUno(player);
+        sendSnapshot();
+    }
 
+    @Override
+    public void onPlayerCaughtUno(Player player, int playerIndex) {
+        game.catchUno(player, playerIndex);
+        sendSnapshot();
+    }
+
+    @Override
+    public void onPlayerDrewTwoCards(Player player) {
+        game.drawTwoCards(player);
+        sendSnapshot();
+    }
+
+    @Override
+    public void onNoActionOnDrawnCard(Player player) {
+        game.moveForwardAsPlayerTookNoActionOnDrawnCard();
+        sendSnapshot();
     }
 }

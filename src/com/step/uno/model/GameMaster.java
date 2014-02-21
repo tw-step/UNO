@@ -1,5 +1,6 @@
 package com.step.uno.model;
 
+
 import com.step.communication.channel.MessageChannel;
 import com.step.communication.factory.CommunicationFactory;
 import com.step.communication.server.MessageServer;
@@ -35,13 +36,14 @@ public class GameMaster implements MessageServerListener, PlayerProxyObserver {
             channel.stop();
             return;
         }
+        System.out.println("new Connection");
         PlayerProxy proxy = new PlayerProxy(channel, this);
         proxy.start();
         proxies.add(proxy);
     }
 
-    private void startGame() {
-        game = new Game(totalPacks, players);
+    public void startGame() {
+        game = new Game(totalPacks,players);
         game.initialize();
         sendSnapshot();
     }
@@ -49,7 +51,6 @@ public class GameMaster implements MessageServerListener, PlayerProxyObserver {
     private void sendSnapshot() {
         for (PlayerProxy proxy : proxies)
             proxy.sendSnapshot(game);
-
     }
 
     @Override
@@ -60,14 +61,14 @@ public class GameMaster implements MessageServerListener, PlayerProxyObserver {
     @Override
     public void onPlayerRegistered(Player player) {
         players.add(player);
-        if(players.size() == totalPlayers)
+        if (players.size() == totalPlayers)
             startGame();
     }
 
     @Override
     public void onPlayerPlayed(Player player, Card card, Colour newColour) {
-        game.playCard(player,card,newColour);
-        if(player.hasWon())
+        game.playCard(player, card, newColour);
+        if (player.hasWon())
             sendResult();
         else
             sendSnapshot();
@@ -83,12 +84,12 @@ public class GameMaster implements MessageServerListener, PlayerProxyObserver {
     @Override
     public void onPlayerDrewCard(Player player) {
         Card card = game.drawCard(player);
-        sendWaitingForDrawnCardAction(player,card);
+        sendWaitingForDrawnCardAction(player, card);
     }
 
     private void sendWaitingForDrawnCardAction(Player player, Card card) {
         for (PlayerProxy proxy : proxies) {
-            proxy.sendWaitingForDrawnCardAction(player,card);
+            proxy.sendWaitingForDrawnCardAction(player, card);
         }
     }
 
@@ -100,7 +101,7 @@ public class GameMaster implements MessageServerListener, PlayerProxyObserver {
 
     @Override
     public void onPlayerCaughtUno(Player player, int playerIndex) {
-        game.catchUno(player,playerIndex);
+        game.catchUno(player, playerIndex);
         sendSnapshot();
     }
 
