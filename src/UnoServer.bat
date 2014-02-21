@@ -1,1 +1,1 @@
-java -cp "../lib/*" com.step.uno.server.UnoServer
+java -cp "../lib/*" com.step.uno.server.UnoServer $@
