@@ -12,15 +12,6 @@ public class GameMasterControllerTest {
 
     StubFactory stub = new StubFactory();
     @Test
-    public void startsTheGameAfterAllPlayersJoin(){
-        MessageChannel channel = mock(MessageChannel.class);
-        GameMasterController controller = new GameMasterController(1,1,stub);
-        controller.waitForConnections();
-        controller.onNewConnection(channel);
-
-        verify(channel,times(1)).send(any(Snapshot.class));
-    }
-    @Test
     public void rejectsConnectionsAfterAllPlayersJoin(){
         MessageChannel channel = mock(MessageChannel.class);
         MessageChannel lateChannel = mock(MessageChannel.class);
@@ -41,4 +32,3 @@ public class GameMasterControllerTest {
         }
     }
 }
-

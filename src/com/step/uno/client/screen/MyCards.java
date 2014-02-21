@@ -14,8 +14,10 @@ import java.util.*;
 import java.util.List;
 
 public class MyCards extends JPanel implements PlayerView {
+    Map<Colour, Color> colors = new HashMap<>();
     private List<Card> cards = new ArrayList<>();
     private JPanel panel = new JPanel();
+    JPanel innerPanel = new JPanel();
     private JScrollPane scrollPane = new JScrollPane();
     private GameClient gameClient;
     private Snapshot snapshot = null;
@@ -30,48 +32,60 @@ public class MyCards extends JPanel implements PlayerView {
     public void setCards() {
         createCards();
         scrollPane.getViewport().add(panel);
-        scrollPane.setPreferredSize(new Dimension(600, 120));
+        scrollPane.setPreferredSize(new Dimension(775, 180));
         scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-        add(scrollPane);
 
         JButton uno = new JButton("UNO");
         uno.setPreferredSize(new Dimension(100, 100));
-        uno.setFont(new Font("Verdana", Font.BOLD,16));
-        add(uno);
+        uno.setFont(new Font("Vardana", Font.BOLD, 16));
+
+        innerPanel.add(scrollPane);
+        innerPanel.add(uno);
+
+        add(innerPanel);
+        setBounds(600, 850, 900, 200);
         uno.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 gameClient.declareUno();
             }
         });
+
     }
 
     private void createCards() {
-        Map<Colour, Color> colors = new HashMap<>();
-        colors.put(Colour.Black, Color.black);
-        colors.put(Colour.Blue, Color.blue);
-        colors.put(Colour.Green, Color.green);
-        colors.put(Colour.Red, Color.red);
-        colors.put(Colour.Yellow, Color.yellow);
+        initColors();
         for (final Card card : cards) {
             JButton jButton = new JButton();
             jButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    if (card.colour == Colour.Black)
+                    if (card.colour == Colour.Black) {
                         gameClient.play(card, card.colour);
-                    else
+                    } else {
                         gameClient.play(card);
+                    }
+                    cards.remove(card);
+                    update(snapshot);
                 }
             });
             jButton.setForeground(Color.BLACK);
             jButton.setText(card.sign.name());
+            jButton.setFont(new Font("Vardana",Font.BOLD,24));
             jButton.setBackground(colors.get(card.colour));
-            jButton.setPreferredSize(new Dimension(100, 100));
+            jButton.setPreferredSize(new Dimension(100, 150));
             jButton.setVisible(true);
             panel.add(jButton);
         }
+    }
+
+    private void initColors() {
+        colors.put(Colour.Black, Color.black);
+        colors.put(Colour.Blue, Color.blue);
+        colors.put(Colour.Green, Color.green);
+        colors.put(Colour.Red, Color.red);
+        colors.put(Colour.Yellow, Color.yellow);
     }
 
     @Override
@@ -81,9 +95,12 @@ public class MyCards extends JPanel implements PlayerView {
 
     @Override
     public void update(Snapshot snapshot) {
-        for (int i = 0; i < snapshot.myCards.length; i++) {
+
+        for (int i = cards.size(); i < snapshot.myCards.length; i++) {
             Card card = snapshot.myCards[i];
-            cards.set(i, card);
+            cards.add(card);
         }
+        panel.removeAll();
+        createCards();
     }
 }

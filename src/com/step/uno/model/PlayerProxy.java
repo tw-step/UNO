@@ -1,5 +1,7 @@
 package com.step.uno.model;
 
+
+
 import com.step.communication.channel.MessageChannel;
 import com.step.communication.channel.MessageChannelListener;
 import com.step.uno.messages.*;
@@ -58,11 +60,10 @@ public class PlayerProxy implements MessageChannelListener {
 
 
 
-
     @Override
     public void onMessage(MessageChannel client, Object message) {
         try {
-            Method method = this.getClass().getMethod("onClientMessage",message.getClass());
+            Method method = this.getClass().getDeclaredMethod("onClientMessage", message.getClass());
             method.invoke(this,message);
         } catch (NoSuchMethodException e) {
 
