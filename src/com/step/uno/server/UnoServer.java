@@ -5,7 +5,9 @@ import com.step.uno.server.controller.GameMasterController;
 
 public class UnoServer{
     public static void main(String[] args) {
-        GameMasterController controller = new GameMasterController(1, 1, new CommunicationFactory());
+        int numberOfPlayers = Integer.parseInt(args[0]);
+        int numberOfPacks = Integer.parseInt(args[1]);
+        GameMasterController controller = new GameMasterController(numberOfPlayers, numberOfPacks, new CommunicationFactory());
         controller.waitForConnections();
     }
 }
