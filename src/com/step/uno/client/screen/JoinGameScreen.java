@@ -25,6 +25,7 @@ public class JoinGameScreen extends JFrame implements JoinGameView {
     public JoinGameScreen(GameClientController controller) {
         this.controller = controller;
         Panel panel = new Panel();
+        masterName.setText("localhost");
         panel.add(master).setFont(new Font("vardana", Font.BOLD, 22));
         panel.add(masterName).setBounds(100, 100, 100, 100);
         panel.add(playerName).setFont(new Font("vardana", Font.BOLD, 22));
@@ -61,5 +62,4 @@ public class JoinGameScreen extends JFrame implements JoinGameView {
         });
         setVisible(true);
     }
-
 }

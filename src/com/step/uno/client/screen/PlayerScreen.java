@@ -15,19 +15,19 @@ public class PlayerScreen extends JFrame implements PlayerView {
     private OpenPile openPile;
     private ClosePile closePile;
     private PlayersView playersView;
-    private ActivityLog activityLog;
     private MyCards myCards;
-    private final JPanel currentPlayer;
-    private final JLabel player;
+    private JPanel currentPlayer;
+    private JLabel player;
+    private ActivityLog activityLog;
 
     public PlayerScreen(GameClient gameClient, Snapshot snapshot) {
         this.gameClient = gameClient;
         this.snapshot = snapshot;
 
+        openPile = new OpenPile(this.snapshot);
         closePile = new ClosePile(this.gameClient,this.snapshot);
         playersView = new PlayersView(this.gameClient,this.snapshot);
         myCards = new MyCards(this.gameClient,this.snapshot);
-        openPile = new OpenPile(this.snapshot);
         activityLog =new ActivityLog();
         currentPlayer = new JPanel();
         player = new JLabel(snapshot.playerSummaries[snapshot.currentPlayerIndex].name+"\'s turn");
@@ -42,20 +42,20 @@ public class PlayerScreen extends JFrame implements PlayerView {
         currentPlayer.add(player);
         currentPlayer.setPreferredSize(new Dimension(200, 200));
         currentPlayer.setVisible(true);
+
         add(currentPlayer);
         add(openPile);
         add(closePile);
         add(playersView);
-        add(activityLog,BorderLayout.EAST);
-        add(myCards, BorderLayout.SOUTH);
+        add(myCards,BorderLayout.SOUTH);
+
         setVisible(true);
-        setResizable(false);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
     @Override
     public void showDisconnected() {
-
+        setVisible(false);
     }
 
     @Override
@@ -64,7 +64,6 @@ public class PlayerScreen extends JFrame implements PlayerView {
         closePile.update(snapshot);
         openPile.update(snapshot);
         playersView.update(snapshot);
-        activityLog.update(snapshot);
         myCards.update(snapshot);
         player.setText(snapshot.playerSummaries[snapshot.currentPlayerIndex].name+"\'s turn");
 
