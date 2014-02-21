@@ -5,9 +5,9 @@ import com.step.uno.client.view.PlayerView;
 import com.step.uno.messages.Snapshot;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class PlayerScreen extends JFrame implements PlayerView {
-
 
     private GameClient gameClient;
     private Snapshot snapshot;
@@ -15,7 +15,7 @@ public class PlayerScreen extends JFrame implements PlayerView {
     private OpenPile openPile;
     private ClosePile closePile;
     private PlayersView playersView;
-
+    private MyCards myCards;
     public PlayerScreen(GameClient gameClient, Snapshot snapshot) {
         this.gameClient = gameClient;
         this.snapshot = snapshot;
@@ -23,14 +23,18 @@ public class PlayerScreen extends JFrame implements PlayerView {
         openPile = new OpenPile(this.snapshot);
         closePile = new ClosePile(this.gameClient,this.snapshot);
         playersView = new PlayersView(this.gameClient,this.snapshot);
+        myCards = new MyCards(this.gameClient,this.snapshot);
 
         openPile.setBounds(900, 400, 250, 300);
         closePile.setBounds(600, 400, 250, 300);
         playersView.setBounds(40, 0, 1500, 180);
+        setLayout(new BorderLayout());
+        myCards.setBounds(300, 0, 900, 200);
 
         add(openPile);
         add(closePile);
         add(playersView);
+        add(myCards,BorderLayout.SOUTH);
 
         setVisible(true);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -43,8 +47,10 @@ public class PlayerScreen extends JFrame implements PlayerView {
 
     @Override
     public void update(Snapshot snapshot) {
+        this.snapshot = snapshot;
         closePile.update(snapshot);
         openPile.update(snapshot);
         playersView.update(snapshot);
+        myCards.update(snapshot);
     }
 }

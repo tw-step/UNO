@@ -44,14 +44,13 @@ public class MyCards extends JPanel implements PlayerView {
         innerPanel.add(uno);
 
         add(innerPanel);
-        setBounds(600, 850, 900, 200);
         uno.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 gameClient.declareUno();
             }
         });
-
+        setVisible(true);
     }
 
     private void createCards() {
