@@ -16,8 +16,8 @@ public class PlayersView extends JPanel implements PlayerView {
     //UI components
     private JScrollPane scrollPane = new JScrollPane();
     private JPanel playerNames = new JPanel();
-    ImageIcon forward = new ImageIcon("D:/uno/src/com/step/uno/client/images/forward11.jpg");
-    ImageIcon backward = new ImageIcon("D:/uno/src/com/step/uno/client/images/backward.jpg");
+    ImageIcon forward = new ImageIcon("src/com/step/uno/client/images/forward11.jpg");
+    ImageIcon backward = new ImageIcon("src/com/step/uno/client/images/backward.jpg");
     private JButton Fdirection = new JButton(forward);
     private JButton Bdirection = new JButton(backward);
 
