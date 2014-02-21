@@ -17,8 +17,8 @@ public class JoinGameScreen extends JFrame implements JoinGameView {
 
     //UI Components
     JButton join = new JButton("join");
-    JTextField masterName = new JTextField("127.0.0.1", 15);
-    JTextField name = new JTextField("me", 15);
+    JTextField masterName = new JTextField(15);
+    JTextField name = new JTextField(15);
 
     public JoinGameScreen(GameClientController controller) {
         this.controller = controller;
@@ -33,8 +33,8 @@ public class JoinGameScreen extends JFrame implements JoinGameView {
     }
 
     @Override
-    public PlayerView switchToPlayerView(GameClient gameClient,Snapshot snapshot) {
-        PlayerView view = new PlayerScreen(gameClient,snapshot);
+    public PlayerView switchToPlayerView(GameClient gameClient, Snapshot snapshot) {
+        PlayerView view = new PlayerScreen(gameClient, snapshot);
         setVisible(false);
         return view;
     }
