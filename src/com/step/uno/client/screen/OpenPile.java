@@ -17,6 +17,7 @@ public class OpenPile extends JPanel{
         openPile.setText(snapshot.openCard.sign.toString());
         openPile.setBackground(getColor());
         openPile.setPreferredSize(new Dimension(150, 200));
+        openPile.setFont(new Font("vardana", Font.BOLD, 18));
         add(openPile);
         setVisible(true);
     }
