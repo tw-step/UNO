@@ -84,6 +84,7 @@ public class PlayersView extends JPanel implements PlayerView {
 
     @Override
     public void update(Snapshot snapshot) {
+
         PlayerSummary[] summaries = snapshot.playerSummaries;
 
         for (int i = 0; i < players.size(); i++) {
