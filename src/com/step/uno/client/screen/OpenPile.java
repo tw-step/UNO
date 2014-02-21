@@ -14,9 +14,14 @@ public class OpenPile extends JPanel{
 
     public OpenPile(Snapshot snapshot) {
         this.snapshot = snapshot;
-        openPile.setText(snapshot.openCard.sign.toString());
+        String sign = snapshot.openCard.sign.name();
+        String part = snapshot.openCard.sign.name();
+        if (sign.startsWith("_"))
+            part = sign.split("_")[1];
+
+        openPile.setText(part);
         openPile.setBackground(getColor());
-        openPile.setPreferredSize(new Dimension(150, 200));
+        openPile.setPreferredSize(new Dimension(100, 150));
         openPile.setFont(new Font("vardana", Font.BOLD, 18));
         add(openPile);
         setVisible(true);
@@ -25,18 +30,18 @@ public class OpenPile extends JPanel{
     private Color getColor() {
 
         Map<Colour,Color> colorMap = new HashMap<>();
-        colorMap.put(Colour.Black,Color.black);
-        colorMap.put(Colour.Red,Color.red);
-        colorMap.put(Colour.Green,Color.green);
-        colorMap.put(Colour.Blue,Color.blue);
-        colorMap.put(Colour.Yellow,Color.yellow);
+        colorMap.put(Colour.Black,new Color(10, 18, 42));
+        colorMap.put(Colour.Red,new Color(254,46,46));
+        colorMap.put(Colour.Green,new Color(1,223,58));
+        colorMap.put(Colour.Blue,new Color(46, 204, 250));
+        colorMap.put(Colour.Yellow,new Color(247,254,46));
 
         return colorMap.get(snapshot.openCard.colour);
     }
 
     public void update(Snapshot snapshot) {
         this.snapshot = snapshot;
-        openPile.setText(snapshot.openCard.sign.toString());
+        openPile.setText(snapshot.openCard.sign.name());
         openPile.setBackground(getColor());
     }
 }

@@ -20,7 +20,7 @@ public class ClosePile extends JPanel {
         this.snapshot = snapshot;
 
         draw = new JButton("Draw Cards");
-        draw.setPreferredSize(new Dimension(150, 200));
+        draw.setPreferredSize(new Dimension(100, 150));
         draw.addActionListener(new OnClick());
         draw.setFont(new Font("vardana", Font.BOLD, 18));
         add(draw);
