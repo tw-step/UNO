@@ -52,7 +52,6 @@ public class MyCards extends JPanel {
 
     private void createCards() {
         initColors();
-        panel.removeAll();
         for (final Card card : snapshot.myCards) {
             JButton jButton = new JButton();
             jButton.addActionListener(new ActionListener() {
@@ -62,11 +61,10 @@ public class MyCards extends JPanel {
                 }
             });
             jButton.setForeground(Color.BLACK);
-            String sign = snapshot.openCard.sign.name();
-            String part = snapshot.openCard.sign.name();
-            if (sign.startsWith("_"))
+            String sign = card.sign.name();
+            String part = card.sign.name();
+            if(sign.startsWith("_"))
                 part = sign.split("_")[1];
-
             jButton.setText(part);
             jButton.setFont(new Font("Vardana", Font.BOLD, 24));
             jButton.setBackground(colors.get(card.colour));
@@ -86,6 +84,7 @@ public class MyCards extends JPanel {
 
     public void update(Snapshot snapshot) {
         this.snapshot = snapshot;
+        panel.removeAll();
         createCards();
         panel.revalidate();
     }
