@@ -1,5 +1,5 @@
 import com.step.communication.channel.MessageChannel;
-import com.step.communication.factory.UnoServerFactory;
+import com.step.communication.factory.UnoFactory;
 import com.step.communication.server.MessageServer;
 import com.step.uno.messages.Snapshot;
 import com.step.uno.server.controller.GameMasterController;
@@ -23,7 +23,7 @@ public class GameMasterControllerTest {
         verify(lateChannel,never()).send(any(Snapshot.class));
     }
 
-    class StubFactory extends UnoServerFactory{
+    class StubFactory extends UnoFactory {
         public final MessageServer messageServer = mock(MessageServer.class);
 
         @Override

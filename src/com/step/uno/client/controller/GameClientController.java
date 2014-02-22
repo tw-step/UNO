@@ -2,7 +2,7 @@ package com.step.uno.client.controller;
 
 import com.step.communication.channel.MessageChannel;
 import com.step.communication.channel.MessageChannelListener;
-import com.step.communication.factory.CommunicationFactory;
+import com.step.communication.factory.UnoFactory;
 import com.step.uno.client.model.GameClient;
 import com.step.uno.client.view.JoinGameView;
 import com.step.uno.client.view.PlayerView;
@@ -13,20 +13,20 @@ import com.step.uno.messages.WaitingForDrawnCardAction;
 import java.lang.reflect.InvocationTargetException;
 
 public class GameClientController implements MessageChannelListener {
-    private CommunicationFactory factory;
+    private UnoFactory factory;
     private JoinGameView joinGameView;
     private PlayerView playerView;
     private MessageChannel channel;
     private GameClient gameClient;
 
-    public GameClientController(CommunicationFactory factory) {
+    public GameClientController(UnoFactory factory) {
         this.factory = factory;
     }
 
     public void join(String serverAddress, String playerName) {
         channel = factory.connectTo(serverAddress, this);
         channel.startListeningForMessages(this);
-        gameClient = new GameClient(channel);
+        gameClient = factory.createGameClient(channel);
         gameClient.sendIntroduction(playerName);
     }
 

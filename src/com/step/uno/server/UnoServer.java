@@ -1,6 +1,6 @@
 package com.step.uno.server;
 
-import com.step.communication.factory.UnoServerFactory;
+import com.step.communication.factory.UnoFactory;
 import com.step.uno.server.controller.GameMasterController;
 
 /**
@@ -11,7 +11,7 @@ public class UnoServer{
         int numberOfPlayers = Integer.parseInt(args[0]);
         int numberOfPacks = Integer.parseInt(args[1]);
 
-        new GameMasterController(numberOfPlayers, numberOfPacks, new UnoServerFactory()).waitForConnections();
+        new GameMasterController(numberOfPlayers, numberOfPacks, new UnoFactory()).waitForConnections();
         System.out.println("waiting for players to connect..");
     }
 }

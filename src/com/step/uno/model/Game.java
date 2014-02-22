@@ -17,7 +17,7 @@ public class Game {
     private int draw2Run=0;
 
     public Game(int packs, List<Player> givenPlayers) {
-        players = new ArrayList<>(givenPlayers);
+        players = givenPlayers;
         closedDeck = new Deck(Card.createNewPacks(packs));
         openDeck = new Deck();
         //in one pack

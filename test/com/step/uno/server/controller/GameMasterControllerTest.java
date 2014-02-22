@@ -1,6 +1,6 @@
 package com.step.uno.server.controller;
 
-import com.step.communication.factory.UnoServerFactory;
+import com.step.communication.factory.UnoFactory;
 import com.step.communication.server.MessageServer;
 import com.step.uno.model.Card;
 import com.step.uno.model.Colour;
@@ -36,7 +36,7 @@ class GameStub extends Game {
 }
 
 public class GameMasterControllerTest {
-    UnoServerFactory factory = mock(UnoServerFactory.class);
+    UnoFactory factory = mock(UnoFactory.class);
     GameMasterController controller = new GameMasterController(1, 1, factory);
     final Game mockedGame = mock(Game.class);
     final List<Player> players = new ArrayList<>();
