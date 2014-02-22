@@ -1,7 +1,6 @@
 package com.step.uno.client.screen;
 
 import com.step.uno.client.model.GameClient;
-import com.step.uno.client.view.PlayerView;
 import com.step.uno.messages.Snapshot;
 import com.step.uno.model.Card;
 import com.step.uno.model.Colour;
@@ -10,12 +9,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.*;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
-public class MyCards extends JPanel implements PlayerView {
+public class MyCards extends JPanel {
     Map<Colour, Color> colors = new HashMap<>();
-    private List<Card> cards = new ArrayList<>();
     private JPanel panel = new JPanel();
     JPanel innerPanel = new JPanel();
     private JScrollPane scrollPane = new JScrollPane();
@@ -25,7 +23,6 @@ public class MyCards extends JPanel implements PlayerView {
     public MyCards(GameClient gameClient, Snapshot snapshot) {
         this.gameClient = gameClient;
         this.snapshot = snapshot;
-        Collections.addAll(this.cards, snapshot.myCards);
         setCards();
     }
 
@@ -55,23 +52,21 @@ public class MyCards extends JPanel implements PlayerView {
 
     private void createCards() {
         initColors();
-        for (final Card card : cards) {
+        for (final Card card : snapshot.myCards) {
             JButton jButton = new JButton();
             jButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    if (card.colour == Colour.Black) {
-                        gameClient.play(card, card.colour);
-                    } else {
-                        gameClient.play(card);
-                    }
-                    cards.remove(card);
-                    update(snapshot);
+                    gameClient.play(card, card.colour);
                 }
             });
             jButton.setForeground(Color.BLACK);
-            jButton.setText(card.sign.name());
-            jButton.setFont(new Font("Vardana",Font.BOLD,24));
+            String sign = card.sign.name();
+            String part = card.sign.name();
+            if(sign.startsWith("_"))
+                part = sign.split("_")[1];
+            jButton.setText(part);
+            jButton.setFont(new Font("Vardana", Font.BOLD, 24));
             jButton.setBackground(colors.get(card.colour));
             jButton.setPreferredSize(new Dimension(100, 150));
             jButton.setVisible(true);
@@ -80,26 +75,17 @@ public class MyCards extends JPanel implements PlayerView {
     }
 
     private void initColors() {
-        colors.put(Colour.Black, Color.black);
-        colors.put(Colour.Blue, Color.blue);
-        colors.put(Colour.Green, Color.green);
-        colors.put(Colour.Red, Color.red);
-        colors.put(Colour.Yellow, Color.yellow);
+        colors.put(Colour.Black,new Color(10, 18, 42));
+        colors.put(Colour.Red,new Color(254,46,46));
+        colors.put(Colour.Green,new Color(1,223,58));
+        colors.put(Colour.Blue,new Color(46, 204, 250));
+        colors.put(Colour.Yellow,new Color(247,254,46));
     }
 
-    @Override
-    public void showDisconnected() {
-
-    }
-
-    @Override
     public void update(Snapshot snapshot) {
-
-        for (int i = cards.size(); i < snapshot.myCards.length; i++) {
-            Card card = snapshot.myCards[i];
-            cards.add(card);
-        }
+        this.snapshot = snapshot;
         panel.removeAll();
         createCards();
+        panel.revalidate();
     }
 }

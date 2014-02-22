@@ -1,8 +1,9 @@
 package com.step.uno.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class PlayerResult {
+public class PlayerResult implements Serializable {
     public String name;
     public Card[] cards;
     public int points;
