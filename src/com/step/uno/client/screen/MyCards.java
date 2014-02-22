@@ -75,7 +75,7 @@ public class MyCards extends JPanel {
         jButton.setVisible(true);
         return jButton;
     }
-    
+
     private void initColors() {
         colors.put(Colour.Black, new Color(10, 18, 42));
         colors.put(Colour.Red, new Color(254, 46, 46));
