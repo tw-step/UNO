@@ -46,6 +46,24 @@ public class Card implements Serializable{
         card.sign = Sign.valueOf(signText);
         return card;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Card)) return false;
+
+        Card card = (Card) o;
+
+        return colour == card.colour && sign == card.sign;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = colour != null ? colour.hashCode() : 0;
+        result = 31 * result + (sign != null ? sign.hashCode() : 0);
+        return result;
+    }
 }
 
 
