@@ -6,6 +6,7 @@ import com.step.communication.factory.CommunicationFactory;
 import com.step.uno.client.model.GameClient;
 import com.step.uno.client.view.JoinGameView;
 import com.step.uno.client.view.PlayerView;
+import com.step.uno.messages.GameResult;
 import com.step.uno.messages.NoActionOnDrawnCard;
 import com.step.uno.messages.Snapshot;
 import com.step.uno.messages.WaitingForDrawnCardAction;
@@ -36,12 +37,14 @@ public class GameClientController implements MessageChannelListener {
     }
 
     private void handle(Snapshot snapshot) {
-        if (playerView == null) playerView = joinGameView.switchToPlayerView(gameClient, snapshot);
+        if (playerView == null){
+            playerView = joinGameView.switchToPlayerView(gameClient, snapshot);
+        }
         else playerView.update(snapshot);
     }
 
     private void handle(WaitingForDrawnCardAction waiting) {
-        channel.send(new NoActionOnDrawnCard());
+        gameClient.informNoActionOnDrawnCard();
     }
 
     @Override
@@ -55,15 +58,6 @@ public class GameClientController implements MessageChannelListener {
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
         }
-
-//        if(message.getClass().equals(Snapshot.class)){
-//            //present snapshot on to screen
-//        }
-//
-//        if(message.getClass().equals(GameResult.class)){
-//            //present result on to screen
-//        }
-//
 
     }
 
