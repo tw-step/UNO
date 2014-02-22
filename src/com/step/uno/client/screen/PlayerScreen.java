@@ -50,7 +50,7 @@ public class PlayerScreen extends JFrame implements PlayerView {
         add(closePile);
         add(playersView);
         add(myCards,BorderLayout.SOUTH);
-
+        add(activityLog,BorderLayout.EAST);
         setVisible(true);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
