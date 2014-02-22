@@ -28,9 +28,9 @@ public class Player {
     }
 
     public void play(Card card) {
-        for (Card card1 : cards) {
-            if(card.colour.equals(card1.colour) && card.sign.equals(card1.sign))
-                cards.remove(card);
+        for (int i = 0; i < cards.size(); i++) {
+            if(card.colour.equals(cards.get(i).colour) && card.sign.equals(cards.get(i).sign))
+                cards.remove(i);
         }
     }
 
