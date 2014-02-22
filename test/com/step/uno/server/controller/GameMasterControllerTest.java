@@ -112,6 +112,108 @@ public class GameMasterControllerTest {
 
     @Test
     public void handlesWhenPlayerDrawsACard() {
+        Player gabbar = new Player("Gabbar");
+        ArrayList<Player> players = new ArrayList<>();
+        doAnswer(new Answer() {
+            @Override
+            public Object answer(InvocationOnMock invocation) throws Throwable {
 
+                return mockedGame;
+            }
+        }).when(factory).createGame(1, players);
+
+        controller.startGame();
+        controller.onPlayerDrewCard(gabbar);
+
+        verify(mockedGame,times(1)).drawCard(gabbar);
+    }
+
+    @Test
+    public void sendsDeclareUnoRequestWhenInvoked() {
+        Player gabbar = new Player("Gabbar");
+        ArrayList<Player> players = new ArrayList<>();
+        doAnswer(new Answer() {
+            @Override
+            public Object answer(InvocationOnMock invocation) throws Throwable {
+
+                return mockedGame;
+            }
+        }).when(factory).createGame(1, players);
+
+        controller.startGame();
+        controller.onPlayerDeclaredUno(gabbar);
+
+        verify(mockedGame,times(1)).declareUno(gabbar);
+    }
+
+    @Test
+    public void sendsCatchUnoRequestWhenInvoked() {
+        Player gabbar = new Player("Gabbar");
+        ArrayList<Player> players = new ArrayList<>();
+        doAnswer(new Answer() {
+            @Override
+            public Object answer(InvocationOnMock invocation) throws Throwable {
+
+                return mockedGame;
+            }
+        }).when(factory).createGame(1, players);
+
+        controller.startGame();
+        controller.onPlayerCaughtUno(gabbar, 2);
+
+        verify(mockedGame,times(1)).catchUno(gabbar, 2);
+    }
+
+    @Test
+    public void sendsDrawCardRequestWhenRequired() {
+        Player gabbar = new Player("Gabbar");
+        ArrayList<Player> players = new ArrayList<>();
+        doAnswer(new Answer() {
+            @Override
+            public Object answer(InvocationOnMock invocation) throws Throwable {
+
+                return mockedGame;
+            }
+        }).when(factory).createGame(1, players);
+
+        controller.startGame();
+        controller.onPlayerDrewCard(gabbar);
+
+        verify(mockedGame,times(1)).drawCard(gabbar);
+    }
+    @Test
+    public void sendsDrawTwoCardsRequestWhenRequired() {
+        Player gabbar = new Player("Gabbar");
+        ArrayList<Player> players = new ArrayList<>();
+        doAnswer(new Answer() {
+            @Override
+            public Object answer(InvocationOnMock invocation) throws Throwable {
+
+                return mockedGame;
+            }
+        }).when(factory).createGame(1, players);
+
+        controller.startGame();
+        controller.onPlayerDrewTwoCards(gabbar);
+
+        verify(mockedGame,times(1)).drawTwoCards(gabbar);
+    }
+
+    @Test
+    public void gameMovesForwardIfNoActionDoneByPlayer() {
+        Player gabbar = new Player("Gabbar");
+        ArrayList<Player> players = new ArrayList<>();
+        doAnswer(new Answer() {
+            @Override
+            public Object answer(InvocationOnMock invocation) throws Throwable {
+
+                return mockedGame;
+            }
+        }).when(factory).createGame(1, players);
+
+        controller.startGame();
+        controller.onNoActionOnDrawnCard(gabbar);
+
+        verify(mockedGame,times(1)).moveForwardAsPlayerTookNoActionOnDrawnCard();
     }
 }
