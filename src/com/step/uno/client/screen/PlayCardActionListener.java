@@ -1,7 +1,9 @@
 package com.step.uno.client.screen;
 
 import com.step.uno.client.model.GameClient;
+import com.step.uno.messages.Snapshot;
 import com.step.uno.model.Card;
+import com.step.uno.model.Sign;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -13,11 +15,11 @@ public class PlayCardActionListener implements ActionListener {
     private JPanel panel;
     private Card openCard;
 
-    public PlayCardActionListener(Card card, GameClient gameClient, JPanel panel, Card openCard) {
+    public PlayCardActionListener(Card card, GameClient gameClient, JPanel panel, Snapshot snapshot) {
         this.card = card;
         this.gameClient = gameClient;
         this.panel = panel;
-        this.openCard = openCard;
+        this.openCard = snapshot.openCard;
     }
 
     @Override
@@ -34,6 +36,11 @@ public class PlayCardActionListener implements ActionListener {
     }
 
     public boolean canPlay(Card playedCard, Card openPileCard) {
-        return playedCard.colour.equals(openPileCard.colour) || playedCard.sign.equals(openPileCard.sign);
+        if (playedCard.sign.equals(Sign.Wild))
+            return true;
+        if (playedCard.colour.equals(openPileCard.colour) || playedCard.sign.equals(openPileCard.sign)) {
+            return true;
+        }
+        return false;
     }
 }

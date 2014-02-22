@@ -59,7 +59,7 @@ public class MyCards extends JPanel {
 
     private JButton createCardButton(Card card) {
         JButton jButton = new JButton();
-        jButton.addActionListener(new PlayCardActionListener(card, gameClient, panel, snapshot.openCard));
+        jButton.addActionListener(new PlayCardActionListener(card, gameClient, panel, snapshot));
         jButton.setForeground(Color.BLACK);
         String sign = card.sign.name();
         String part = card.sign.name();
