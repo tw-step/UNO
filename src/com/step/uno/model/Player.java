@@ -28,7 +28,10 @@ public class Player {
     }
 
     public void play(Card card) {
-        cards.remove(card);
+        for (Card card1 : cards) {
+            if(card.colour.equals(card1.colour) && card.sign.equals(card1.sign))
+                cards.remove(card);
+        }
     }
 
     public void declareUno() {
@@ -51,9 +54,5 @@ public class Player {
         int total = 0;
         for (Card card : cards) total += card.sign.points;
         return total;
-    }
-
-    public List<Card> getCards() {
-        return cards;
     }
 }

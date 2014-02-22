@@ -53,28 +53,41 @@ public class MyCards extends JPanel {
     private void createCards() {
         initColors();
         for (final Card card : snapshot.myCards) {
-            JButton jButton = new JButton();
-            jButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    gameClient.play(card, card.colour);
-                }
-            });
-            jButton.setForeground(Color.BLACK);
-            String sign = card.sign.name();
-            String part = card.sign.name();
-            if(sign.startsWith("_"))
-                part = sign.split("_")[1];
-            jButton.setText(part);
-
-            jButton.setFont(new Font("Vardana", Font.BOLD, 24));
-            jButton.setBackground(colors.get(card.colour));
-            if (card.colour == Colour.Black)
-                jButton.setForeground(new Color(255, 255, 255));
-            jButton.setPreferredSize(new Dimension(100, 150));
-            jButton.setVisible(true);
-            panel.add(jButton);
+            panel.add(createCardButton(card));
         }
+    }
+
+    private JButton createCardButton(Card card) {
+        JButton jButton = new JButton();
+        jButton.addActionListener(playActionListener(card));
+        jButton.setForeground(Color.BLACK);
+        String sign = card.sign.name();
+        String part = card.sign.name();
+        if(sign.startsWith("_"))
+            part = sign.split("_")[1];
+        jButton.setText(part);
+
+        jButton.setFont(new Font("Vardana", Font.BOLD, 24));
+        jButton.setBackground(colors.get(card.colour));
+        if (card.colour == Colour.Black)
+            jButton.setForeground(new Color(255, 255, 255));
+        jButton.setPreferredSize(new Dimension(100, 150));
+        jButton.setVisible(true);
+        return jButton;
+    }
+
+    private ActionListener playActionListener(final Card card) {
+        return new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                gameClient.play(card, card.colour);
+
+                JButton button = (JButton) e.getSource();
+                button.setVisible(false);
+                panel.remove(button);
+                panel.revalidate();
+            }
+        };
     }
 
     private void initColors() {
@@ -86,9 +99,11 @@ public class MyCards extends JPanel {
     }
 
     public void update(Snapshot snapshot) {
+        for (int i = this.snapshot.myCards.length; i < snapshot.myCards.length; i++) {
+            Card myCard = snapshot.myCards[i];
+            panel.add(createCardButton(myCard));
+        }
         this.snapshot = snapshot;
-        panel.removeAll();
-        createCards();
         panel.revalidate();
     }
 }
