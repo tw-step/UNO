@@ -16,10 +16,7 @@ public class PlayersView extends JPanel implements PlayerView {
     //UI components
     private JScrollPane scrollPane = new JScrollPane();
     private JPanel playerNames = new JPanel();
-    ImageIcon forward = new ImageIcon("src/com/step/uno/client/images/forward11.jpg");
-    ImageIcon backward = new ImageIcon("src/com/step/uno/client/images/backward.jpg");
-    private JLabel Fdirection = new JLabel(forward);
-    private JLabel Bdirection = new JLabel(backward);
+    private JLabel direction = new JLabel();
 
     private ArrayList<JButton> players = new ArrayList<>();
     private GameClient gameClient;
@@ -28,6 +25,7 @@ public class PlayersView extends JPanel implements PlayerView {
         this.gameClient = gameClient;
 
         createPlayerButtons(snapshot.playerSummaries);
+        setDirection(snapshot.isInAscendingOrder);
 
         playerNames.setVisible(true);
         scrollPane.getViewport().add(playerNames);
@@ -36,15 +34,8 @@ public class PlayersView extends JPanel implements PlayerView {
 
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-
-        Fdirection.setVisible(false);
-        Bdirection.setVisible(false);
-        setDirection(snapshot.isInAscendingOrder);
-
-        add(Fdirection).setPreferredSize(new Dimension(150, 105));
-        add(Bdirection).setPreferredSize(new Dimension(150, 105));
-
         add(scrollPane);
+        add(direction);
         setSize(200, 200);
         setVisible(true);
 
@@ -52,9 +43,9 @@ public class PlayersView extends JPanel implements PlayerView {
 
     private void setDirection(boolean isInAscendingOrder) {
         if (isInAscendingOrder)
-            Fdirection.setVisible(true);
+            direction.setText("==>>");
         else
-            Bdirection.setVisible(true);
+            direction.setText("<<==");
     }
 
     private void createPlayerButtons(PlayerSummary[] summaries) {
@@ -84,7 +75,6 @@ public class PlayersView extends JPanel implements PlayerView {
 
     @Override
     public void update(Snapshot snapshot) {
-
         PlayerSummary[] summaries = snapshot.playerSummaries;
 
         for (int i = 0; i < players.size(); i++) {
