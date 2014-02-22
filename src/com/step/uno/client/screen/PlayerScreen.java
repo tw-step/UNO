@@ -41,7 +41,7 @@ public class PlayerScreen extends JFrame implements PlayerView {
         setLayout(new BorderLayout());
         currentPlayer.setBounds(450,200,200,50);
         currentPlayer.add(player);
-        currentPlayer.setPreferredSize(new Dimension(200, 200));
+        currentPlayer.setPreferredSize(new Dimension(400, 200));
         currentPlayer.setVisible(true);
 
         add(currentPlayer);
