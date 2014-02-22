@@ -31,6 +31,8 @@ public class Game {
         //set current turn to first player
     }
 
+
+
     public void initialize() {
         Collections.shuffle(players);
         closedDeck.shuffle();
@@ -159,7 +161,3 @@ public class Game {
         nextTurn();
     }
 }
-
-
-
-

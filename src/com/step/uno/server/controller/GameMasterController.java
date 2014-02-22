@@ -1,7 +1,7 @@
 package com.step.uno.server.controller;
 
 import com.step.communication.channel.MessageChannel;
-import com.step.communication.factory.CommunicationFactory;
+import com.step.communication.factory.UnoServerFactory;
 import com.step.communication.server.MessageServer;
 import com.step.communication.server.MessageServerListener;
 import com.step.uno.messages.GameResult;
@@ -13,13 +13,13 @@ import java.util.List;
 public class GameMasterController implements MessageServerListener, PlayerProxyObserver {
     private final int totalPlayers;
     private final int totalPacks;
-    private final CommunicationFactory factory;
+    private final UnoServerFactory factory;
     private MessageServer server;
     private final List<PlayerProxy> proxies = new ArrayList<>();
     private List<Player> players = new ArrayList<>();
     private Game game;
 
-    public GameMasterController(int totalPlayers, int packs, CommunicationFactory factory) {
+    public GameMasterController(int totalPlayers, int packs, UnoServerFactory factory) {
         this.totalPlayers = totalPlayers;
         this.totalPacks = packs;
         this.factory = factory;
@@ -37,13 +37,13 @@ public class GameMasterController implements MessageServerListener, PlayerProxyO
             return;
         }
         System.out.println("new Connection");
-        PlayerProxy proxy = new PlayerProxy(channel, this);
+        PlayerProxy proxy = factory.createPlayerProxy(channel, this);
         proxy.start();
         proxies.add(proxy);
     }
 
     public void startGame() {
-        game = new Game(totalPacks,players);
+        game = factory.createGame(totalPacks,players);
         game.initialize();
         sendSnapshot();
     }
