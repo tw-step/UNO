@@ -59,7 +59,7 @@ public class MyCards extends JPanel {
 
     private JButton createCardButton(Card card) {
         JButton jButton = new JButton();
-        jButton.addActionListener(playActionListener(card));
+        jButton.addActionListener(new PlayCardActionListener(card, gameClient, panel, snapshot.openCard));
         jButton.setForeground(Color.BLACK);
         String sign = card.sign.name();
         String part = card.sign.name();
@@ -75,22 +75,7 @@ public class MyCards extends JPanel {
         jButton.setVisible(true);
         return jButton;
     }
-
-    private ActionListener playActionListener(final Card card) {
-        return new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                gameClient.play(card, card.colour);
-
-                JButton button = (JButton) e.getSource();
-                button.setVisible(false);
-                panel.remove(button);
-
-                panel.revalidate();
-            }
-        };
-    }
-
+    
     private void initColors() {
         colors.put(Colour.Black, new Color(10, 18, 42));
         colors.put(Colour.Red, new Color(254, 46, 46));

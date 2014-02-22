@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Card implements Serializable{
-    public Colour colour ;
+public class Card implements Serializable {
+    public Colour colour;
     public Sign sign;
 
     //in one pack
@@ -20,10 +20,10 @@ public class Card implements Serializable{
 
     private static List<Card> createPack() {
         List<Card> cards = new ArrayList<>();
-        Colour[] colours = {Colour.Blue,Colour.Green,Colour.Red,Colour.Yellow};
+        Colour[] colours = {Colour.Blue, Colour.Green, Colour.Red, Colour.Yellow};
         for (Colour c : colours) {
             cards.add(createCard(c, "_0"));
-            for(int times = 0;times<2;times++){
+            for (int times = 0; times < 2; times++) {
                 for (int i = 1; i < 10; i++) {
                     cards.add(createCard(c, "_" + i));
                 }
@@ -33,7 +33,7 @@ public class Card implements Serializable{
             }
         }
 
-        for(int times = 0;times<4;times++){
+        for (int times = 0; times < 4; times++) {
             cards.add(createCard(Colour.Black, "Wild"));
             cards.add(createCard(Colour.Black, "WildDrawFour"));
         }
@@ -47,6 +47,10 @@ public class Card implements Serializable{
         return card;
     }
 
+    @Override
+    public String toString() {
+        return this.colour + " " + this.sign;
+    }
 }
 
 
