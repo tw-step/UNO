@@ -20,7 +20,7 @@ public class ActivityLog extends JPanel implements PlayerView {
         logPanel.setVisible(true);
         scrollPane.getViewport().add(logPanel);
 
-        scrollPane.setPreferredSize(new Dimension(300, 800));
+        scrollPane.setPreferredSize(new Dimension(200, 700));
 
         add(scrollPane);
         setVisible(true);

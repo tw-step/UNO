@@ -29,7 +29,7 @@ public class MyCards extends JPanel {
     public void setCards() {
         createCards();
         scrollPane.getViewport().add(panel);
-        scrollPane.setPreferredSize(new Dimension(775, 180));
+        scrollPane.setPreferredSize(new Dimension(750, 180));
         scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
@@ -37,8 +37,8 @@ public class MyCards extends JPanel {
         uno.setPreferredSize(new Dimension(100, 100));
         uno.setFont(new Font("Vardana", Font.BOLD, 16));
 
-        innerPanel.add(scrollPane);
         innerPanel.add(uno);
+        innerPanel.add(scrollPane);
 
         add(innerPanel);
         uno.addActionListener(new ActionListener() {
@@ -66,8 +66,11 @@ public class MyCards extends JPanel {
             if(sign.startsWith("_"))
                 part = sign.split("_")[1];
             jButton.setText(part);
+
             jButton.setFont(new Font("Vardana", Font.BOLD, 24));
             jButton.setBackground(colors.get(card.colour));
+            if (card.colour == Colour.Black)
+                jButton.setForeground(new Color(255, 255, 255));
             jButton.setPreferredSize(new Dimension(100, 150));
             jButton.setVisible(true);
             panel.add(jButton);

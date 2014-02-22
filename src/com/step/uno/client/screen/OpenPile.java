@@ -18,6 +18,7 @@ public class OpenPile extends JPanel{
 
         openPile.setText(part);
         openPile.setBackground(getColor());
+
         openPile.setPreferredSize(new Dimension(100, 150));
         openPile.setFont(new Font("vardana", Font.BOLD, 18));
         add(openPile);
