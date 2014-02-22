@@ -1,6 +1,4 @@
-import com.step.communication.channel.MessageChannel;
-import com.step.communication.channel.MessageChannelListener;
-import com.step.communication.factory.UnoFactory;
+import com.step.uno.StubFactory;
 import com.step.uno.client.controller.GameClientController;
 import com.step.uno.client.model.GameClient;
 import com.step.uno.client.view.JoinGameView;
@@ -39,21 +37,24 @@ public class GameClientControllerTest {
         verify(playerView, times(0)).showDisconnected();
     }
 
-//    @Test
-//    public void displaysGameSnapshotAsItArrives() {
-//        controller.join("serverAddress", "me");
-//        Snapshot snapshot = new Snapshot();
-//
-//        controller.onMessage(stub.channel, snapshot);
-//        verify(playerView, times(1)).update(snapshot);
-//    }
-
-    class StubFactory extends UnoFactory {
-        public final MessageChannel channel = mock(MessageChannel.class);
-
-        @Override
-        public MessageChannel connectTo(String serverAddress, MessageChannelListener observer) {
-            return channel;
-        }
+    @Test
+    public void viewShouldChangeToPlayerViewFromJoinViewOnNewSnapshot() {
+        controller.join("serverAddress", "me");
+        Snapshot snapshot = new Snapshot();
+        controller.onMessage(stub.channel, snapshot);
+        verify(joinGameView, times(1)).switchToPlayerView(stub.gameClient, snapshot);
     }
+
+
+    @Test
+    public void updatePlayerViewWithNewSnapshot() {
+        controller.join("serverAddress", "me");
+        Snapshot snapshot = new Snapshot();
+        controller.onMessage(stub.channel, snapshot);
+
+        controller.onMessage(stub.channel, snapshot);
+        verify(playerView, times(1)).update(snapshot);
+    }
+
+
 }

@@ -9,7 +9,6 @@ public class GameClient  {
 
     private MessageChannel channel;
 
-
     public GameClient(MessageChannel channel) {
         this.channel = channel;
     }
