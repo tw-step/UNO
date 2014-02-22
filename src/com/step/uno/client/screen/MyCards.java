@@ -63,7 +63,7 @@ public class MyCards extends JPanel {
         jButton.setForeground(Color.BLACK);
         String sign = card.sign.name();
         String part = card.sign.name();
-        if(sign.startsWith("_"))
+        if (sign.startsWith("_"))
             part = sign.split("_")[1];
         jButton.setText(part);
 
@@ -91,11 +91,11 @@ public class MyCards extends JPanel {
     }
 
     private void initColors() {
-        colors.put(Colour.Black,new Color(10, 18, 42));
-        colors.put(Colour.Red,new Color(254,46,46));
-        colors.put(Colour.Green,new Color(1,223,58));
-        colors.put(Colour.Blue,new Color(46, 204, 250));
-        colors.put(Colour.Yellow,new Color(247,254,46));
+        colors.put(Colour.Black, new Color(10, 18, 42));
+        colors.put(Colour.Red, new Color(254, 46, 46));
+        colors.put(Colour.Green, new Color(1, 223, 58));
+        colors.put(Colour.Blue, new Color(46, 204, 250));
+        colors.put(Colour.Yellow, new Color(247, 254, 46));
     }
 
     public void update(Snapshot snapshot) {
