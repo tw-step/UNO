@@ -52,5 +52,3 @@ public class Card implements Serializable {
         return this.colour + " " + this.sign;
     }
 }
-
-

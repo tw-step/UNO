@@ -29,7 +29,7 @@ public class Player {
 
     public void play(Card card) {
         for (int i = 0; i < cards.size(); i++) {
-            if(card.colour.equals(cards.get(i).colour) && card.sign.equals(cards.get(i).sign))
+            if (card.colour.equals(cards.get(i).colour) && card.sign.equals(cards.get(i).sign))
                 cards.remove(i);
         }
     }

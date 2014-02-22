@@ -1,6 +1,6 @@
 package com.step.uno.model;
 
-public interface PlayerProxyObserver{
+public interface PlayerProxyObserver {
     void onPlayerRegistered(Player player);
 
     void onPlayerPlayed(Player player, Card card, Colour newColour);

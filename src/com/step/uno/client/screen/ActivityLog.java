@@ -1,12 +1,11 @@
 package com.step.uno.client.screen;
 
-import com.step.uno.client.view.PlayerView;
 import com.step.uno.messages.Snapshot;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class ActivityLog extends JPanel implements PlayerView {
+public class ActivityLog extends JPanel {
 
     private final JPanel logPanel =new JPanel();
     private JScrollPane scrollPane = new JScrollPane();
@@ -24,11 +23,6 @@ public class ActivityLog extends JPanel implements PlayerView {
 
         add(scrollPane);
         setVisible(true);
-
-    }
-
-    @Override
-    public void showDisconnected() {
 
     }
 

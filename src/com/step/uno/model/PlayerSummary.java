@@ -2,7 +2,7 @@ package com.step.uno.model;
 
 import java.io.Serializable;
 
-public class PlayerSummary  implements Serializable {
+public class PlayerSummary implements Serializable {
     public String name;
     public int cardsInHand;
     private boolean declaredUno;

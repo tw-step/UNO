@@ -43,7 +43,7 @@ public class GameMasterController implements MessageServerListener, PlayerProxyO
     }
 
     public void startGame() {
-        game = factory.createGame(totalPacks,players);
+        game = factory.createGame(totalPacks, players);
         game.initialize();
         sendSnapshot();
     }
