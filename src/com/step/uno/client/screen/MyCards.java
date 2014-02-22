@@ -66,7 +66,7 @@ public class MyCards extends JPanel {
         if (sign.startsWith("_"))
             part = sign.split("_")[1];
         jButton.setText(part);
-
+        jButton.setEnabled(snapshot.currentPlayerIndex == snapshot.myPlayerIndex);
         jButton.setFont(new Font("Vardana", Font.BOLD, 24));
         jButton.setBackground(colors.get(card.colour));
         if (card.colour == Colour.Black)
@@ -85,6 +85,7 @@ public class MyCards extends JPanel {
                 JButton button = (JButton) e.getSource();
                 button.setVisible(false);
                 panel.remove(button);
+
                 panel.revalidate();
             }
         };
@@ -99,11 +100,9 @@ public class MyCards extends JPanel {
     }
 
     public void update(Snapshot snapshot) {
-        for (int i = this.snapshot.myCards.length; i < snapshot.myCards.length; i++) {
-            Card myCard = snapshot.myCards[i];
-            panel.add(createCardButton(myCard));
-        }
         this.snapshot = snapshot;
+        panel.removeAll();
+        createCards();
         panel.revalidate();
     }
 }

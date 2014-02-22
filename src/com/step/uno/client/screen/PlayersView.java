@@ -83,9 +83,6 @@ public class PlayersView extends JPanel implements PlayerView {
             players.get(i).setText(summaries[i].name + " : " + summaries[i].cardsInHand);
         }
         setDirection(snapshot.isInAscendingOrder);
-
     }
-
-
 }
 
