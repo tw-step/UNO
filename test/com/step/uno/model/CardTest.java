@@ -20,7 +20,7 @@ public class CardTest {
     }
 
     @Test
-    public void _2CardsAreNotEqualWhenTheirColorAndSignDoNotMatch() {
+    public void twoCardsAreNotEqualWhenTheirColorOrSignDoNotMatch() {
         Card _1_black = new Card();
         _1_black.colour = Colour.Black;
         _1_black.sign = Sign._1;
