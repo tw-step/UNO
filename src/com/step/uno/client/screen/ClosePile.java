@@ -21,14 +21,18 @@ public class ClosePile extends JPanel {
 
         draw = new JButton("Draw Cards");
         draw.setPreferredSize(new Dimension(100, 150));
+        draw.setEnabled(snapshot.currentPlayerIndex == snapshot.myPlayerIndex);
+
         draw.addActionListener(new OnClick());
         draw.setFont(new Font("vardana", Font.BOLD, 18));
         add(draw);
         setVisible(true);
+
     }
 
     public void update(Snapshot snapshot) {
         this.snapshot = snapshot;
+        draw.setEnabled(snapshot.currentPlayerIndex == snapshot.myPlayerIndex);
     }
 
     private class OnClick implements ActionListener {
@@ -36,6 +40,7 @@ public class ClosePile extends JPanel {
         public void actionPerformed(ActionEvent e) {
             gameClient.draw();
         }
+
     }
 
 }
