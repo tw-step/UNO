@@ -1,12 +1,12 @@
 import com.step.communication.channel.MessageChannel;
 import com.step.communication.channel.MessageChannelListener;
-import com.step.communication.factory.CommunicationFactory;
+import com.step.communication.factory.UnoFactory;
 import com.step.uno.client.controller.GameClientController;
 import com.step.uno.client.model.GameClient;
 import com.step.uno.client.view.JoinGameView;
 import com.step.uno.client.view.PlayerView;
-import com.step.uno.messages.Snapshot;
 import com.step.uno.messages.Introduction;
+import com.step.uno.messages.Snapshot;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Matchers;
@@ -48,7 +48,7 @@ public class GameClientControllerTest {
 //        verify(playerView, times(1)).update(snapshot);
 //    }
 
-    class StubFactory extends CommunicationFactory {
+    class StubFactory extends UnoFactory {
         public final MessageChannel channel = mock(MessageChannel.class);
 
         @Override
