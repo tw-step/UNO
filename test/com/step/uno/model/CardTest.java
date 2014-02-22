@@ -2,9 +2,8 @@ package com.step.uno.model;
 
 import org.junit.Test;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.not;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotSame;
 
 public class CardTest {
     @Test
@@ -17,7 +16,7 @@ public class CardTest {
         first_1_black.sign = Sign._1;
         second_1_black.sign = Sign._1;
 
-        assertThat(first_1_black, is(second_1_black));
+        assertEquals(first_1_black, second_1_black);
     }
 
     @Test
@@ -28,6 +27,6 @@ public class CardTest {
         Card _1_blue = new Card();
         _1_blue.colour = Colour.Blue;
         _1_blue.sign = Sign._1;
-        assertThat(_1_blue, is(not(_1_black)));
+        assertNotSame(_1_blue,_1_black);
     }
 }
