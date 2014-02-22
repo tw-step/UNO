@@ -6,6 +6,7 @@ import com.step.uno.model.Card;
 import com.step.uno.model.Colour;
 import com.step.uno.model.Game;
 import com.step.uno.model.Player;
+import org.junit.Before;
 import org.junit.Test;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
@@ -38,19 +39,19 @@ public class GameMasterControllerTest {
     UnoServerFactory factory = mock(UnoServerFactory.class);
     GameMasterController controller = new GameMasterController(1, 1, factory);
     final Game mockedGame = mock(Game.class);
+    final List<Player> players = new ArrayList<>();
+    final GameStub stub = new GameStub(1, players);
+    Player gabbar = new Player("Gabbar");
+
+    @Before
+    public void setUp() throws Exception {
+        when(factory.createGame(1, players)).thenReturn(mockedGame);
+    }
 
     @Test
-    public void startsGameWhenAsked() {
-        final List<Player> players = new ArrayList<>();
-        final GameStub stub = new GameStub(1, players);
-        doAnswer(new Answer() {
-            @Override
-            public Object answer(InvocationOnMock invocation) throws Throwable {
+    public void startsGameMasterWhenAsked() {
 
-                return stub;
-            }
-        }).when(factory).createGame(1, players);
-
+        when(factory.createGame(1, players)).thenReturn(stub);
         controller.startGame();
         verify(factory).createGame(1, players);
         assertTrue(stub.initializeCalled);
@@ -75,16 +76,7 @@ public class GameMasterControllerTest {
 
     @Test
     public void startsGameWhenAllPlayersRegistered() {
-        final List<Player> players = new ArrayList<>();
-        players.add(new Player("taj"));
-        doAnswer(new Answer() {
-            @Override
-            public Object answer(InvocationOnMock invocation) throws Throwable {
-
-                return mockedGame;
-            }
-        }).when(factory).createGame(anyInt(), eq(players));
-
+        players.add(gabbar);
         controller.onPlayerRegistered(players.get(0));
 
         verify(factory).createGame(1, players);
@@ -94,34 +86,17 @@ public class GameMasterControllerTest {
     public void handlesWhenANewCardIsPlayed() {
         final List<Player> players = new ArrayList<>();
         final GameStub stub = new GameStub(1, players);
-        doAnswer(new Answer() {
-            @Override
-            public Object answer(InvocationOnMock invocation) throws Throwable {
-
-                return stub;
-            }
-        }).when(factory).createGame(1, players);
-        Card card = new Card();
+        when(factory.createGame(1, players)).thenReturn(stub);
 
 
         controller.startGame();
-        controller.onPlayerPlayed(new Player("Gabbar"), card, Colour.Black);
+        controller.onPlayerPlayed(gabbar, new Card(), Colour.Black);
 
         assertTrue(stub.playCardCalled);
     }
 
     @Test
     public void handlesWhenPlayerDrawsACard() {
-        Player gabbar = new Player("Gabbar");
-        ArrayList<Player> players = new ArrayList<>();
-        doAnswer(new Answer() {
-            @Override
-            public Object answer(InvocationOnMock invocation) throws Throwable {
-
-                return mockedGame;
-            }
-        }).when(factory).createGame(1, players);
-
         controller.startGame();
         controller.onPlayerDrewCard(gabbar);
 
@@ -130,16 +105,6 @@ public class GameMasterControllerTest {
 
     @Test
     public void sendsDeclareUnoRequestWhenInvoked() {
-        Player gabbar = new Player("Gabbar");
-        ArrayList<Player> players = new ArrayList<>();
-        doAnswer(new Answer() {
-            @Override
-            public Object answer(InvocationOnMock invocation) throws Throwable {
-
-                return mockedGame;
-            }
-        }).when(factory).createGame(1, players);
-
         controller.startGame();
         controller.onPlayerDeclaredUno(gabbar);
 
@@ -148,16 +113,6 @@ public class GameMasterControllerTest {
 
     @Test
     public void sendsCatchUnoRequestWhenInvoked() {
-        Player gabbar = new Player("Gabbar");
-        ArrayList<Player> players = new ArrayList<>();
-        doAnswer(new Answer() {
-            @Override
-            public Object answer(InvocationOnMock invocation) throws Throwable {
-
-                return mockedGame;
-            }
-        }).when(factory).createGame(1, players);
-
         controller.startGame();
         controller.onPlayerCaughtUno(gabbar, 2);
 
@@ -166,16 +121,6 @@ public class GameMasterControllerTest {
 
     @Test
     public void sendsDrawCardRequestWhenRequired() {
-        Player gabbar = new Player("Gabbar");
-        ArrayList<Player> players = new ArrayList<>();
-        doAnswer(new Answer() {
-            @Override
-            public Object answer(InvocationOnMock invocation) throws Throwable {
-
-                return mockedGame;
-            }
-        }).when(factory).createGame(1, players);
-
         controller.startGame();
         controller.onPlayerDrewCard(gabbar);
 
@@ -183,16 +128,6 @@ public class GameMasterControllerTest {
     }
     @Test
     public void sendsDrawTwoCardsRequestWhenRequired() {
-        Player gabbar = new Player("Gabbar");
-        ArrayList<Player> players = new ArrayList<>();
-        doAnswer(new Answer() {
-            @Override
-            public Object answer(InvocationOnMock invocation) throws Throwable {
-
-                return mockedGame;
-            }
-        }).when(factory).createGame(1, players);
-
         controller.startGame();
         controller.onPlayerDrewTwoCards(gabbar);
 
@@ -201,16 +136,6 @@ public class GameMasterControllerTest {
 
     @Test
     public void gameMovesForwardIfNoActionDoneByPlayer() {
-        Player gabbar = new Player("Gabbar");
-        ArrayList<Player> players = new ArrayList<>();
-        doAnswer(new Answer() {
-            @Override
-            public Object answer(InvocationOnMock invocation) throws Throwable {
-
-                return mockedGame;
-            }
-        }).when(factory).createGame(1, players);
-
         controller.startGame();
         controller.onNoActionOnDrawnCard(gabbar);
 
